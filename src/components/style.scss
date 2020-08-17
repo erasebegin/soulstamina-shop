@@ -1,0 +1,38 @@
+// Importing variables
+@import "./variables.scss";
+
+// Importing Bulma from node_modules
+@import "~bulma/bulma.sass";
+
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+
+
+
+.gradientBg {
+	font-family: 'Heebo', sans-serif;
+  display: flex;
+  background: linear-gradient(to right, $primary-color, $secondary-color);
+}
+
+.alt-font {
+	font-family: 'Playfair DIsplay', serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  padding: 1.5rem 1.5rem;
+  line-height: 1.5rem;
+  a {
+    border-bottom: 1px solid;
+    color: black;
+  }
+  a:hover {
+    color: $secondary-color;
+  }
+}
