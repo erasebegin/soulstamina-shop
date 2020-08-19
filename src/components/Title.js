@@ -3,19 +3,18 @@ import styled from 'styled-components';
 
 export default function Title({ title, styleClass }) {
   return (
-    <TitleContainer className="row">
-        <div className="col text-center py-4">
+    <TitleContainer>
         <h1 className={styleClass}>{title}</h1>
-        </div>
     </TitleContainer>
   );
 }
 
 Title.defaultProps = {
   title: "default title",
-  styleClass: "display-4 text-capitalize main-page-title"
+  styleClass: "is-size-2 has-text-centered"
 };
 
 const TitleContainer = styled.div`
-  background: var(--main1);
+  font-family: "Playfair Display", serif;
+  text-transform: lowercase;
 `

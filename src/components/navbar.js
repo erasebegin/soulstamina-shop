@@ -33,9 +33,9 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className={`navbar-menu ${navActive}`}>
+      <div className={`navbar-menu ${navActive}`}>
         <div className="navbar-start">
-          <a className="navbar-item">Home</a>
+          <Link to="/" className="navbar-item">Home</Link>
 
           <a className="navbar-item">About</a>
 
@@ -43,9 +43,9 @@ const Navbar = () => {
             <a className="navbar-link">More</a>
 
             <div className="navbar-dropdown">
-              <a className="navbar-item">Print</a>
-              <a className="navbar-item">Canvas</a>
-              <a className="navbar-item">Photography</a>
+              <a className="navbar-item nn">Print</a>
+              <a className="navbar-item nn">Canvas</a>
+              <a className="navbar-item nn">Photography</a>
             </div>
           </div>
         </div>
@@ -59,6 +59,12 @@ export default Navbar;
 const Nav = styled.nav`
   background: white !important;
   @media (min-width: 400px) {
-    height: 200px;
+    height: 75px;
+  }
+
+  .nn{
+    &hover{
+      color: #BC9F75;
+    }
   }
 `;
