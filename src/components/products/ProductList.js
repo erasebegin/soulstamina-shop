@@ -14,7 +14,7 @@ export default function ProductList({ items, isMobile }) {
             if (isMobile === true) {
               return <ProductCard data={product} key={product.node.id} />;
             } else {
-              return <ProductCardLarge data={product} key={product.node.id} />;
+              return <ProductCardLarge data={product} key={product.node.id} className="column" />;
             }
           })}
         </div>

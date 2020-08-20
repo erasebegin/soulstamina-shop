@@ -10,20 +10,21 @@ export default function productCard({ data }) {
       <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img src={image.file.url} alt="a random image" />
+            <Link to={`/${slug}`}>
+              <img src={image.file.url} alt="a random image" />
+            </Link>
           </figure>
         </div>
         <div className="card-content">
-          <p className="title has-text-centered">{title.toLowerCase()}</p>
+          <Link to={`/${slug}`}>
+            <p className="title mb-3">{title.toLowerCase()}</p>
+          </Link>
           <div className="content">
             <p>{description.internal.content}</p>
           </div>
         </div>
         <div className="footer">
           <p className="">{`$${price}`}</p>
-          <Link to={`/${slug}`}>
-            <button type="button">buy now</button>
-          </Link>
         </div>
       </div>
     </Card>
@@ -57,6 +58,7 @@ const Card = styled.div`
 
   .title {
     font-family: "Playfair Display", serif;
+    margin-top: -4%;
   }
 
   img {
@@ -67,9 +69,5 @@ const Card = styled.div`
     margin: 0 auto;
     margin-top: -3.5%;
     object-fit: cover;
-
-    @media (min-width: 500px) {
-      /* max-width: 20%; */
-    }
   }
 `;

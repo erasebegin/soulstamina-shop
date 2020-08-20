@@ -58,9 +58,6 @@ export default Navbar;
 
 const Nav = styled.nav`
   background: white !important;
-  @media (min-width: 400px) {
-    height: 75px;
-  }
 
   .nn{
     &hover{

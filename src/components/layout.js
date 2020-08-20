@@ -11,7 +11,7 @@ const Layout = ({ children }) => (
       <Helmet />
       <Navbar />
       <div className="columns is-centered">
-        <div className="column is-three-quarters">
+        <div className="column">
           {children}
           </div>
       </div>

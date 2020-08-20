@@ -4,6 +4,8 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Header from "../components/header/header";
 import ProductList from "../components/products/ProductList";
+import FeaturedProduct from "../components/products/productCardFeatured";
+import Title from "../components/Title"
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
@@ -22,7 +24,11 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <Layout>
         <Header background={data.img} isMobile={isMobile} />
-        <ProductList items={data.featured} isMobile={isMobile} />
+        <FeaturedProduct data={data.recent.edges[0].node} isMobile={isMobile} />
+        <section className="section recent-products">
+          <Title title="recent."/>
+          <ProductList items={data.recent} isMobile={isMobile} />
+        </section>
       </Layout>
     </>
   );
@@ -58,7 +64,7 @@ export const query = graphql`
         }
       }
     }
-    featured: allContentfulProduct(
+    recent: allContentfulProduct(
       filter: { featured: { eq: true } }
       sort: { fields: createdAt }
     ) {

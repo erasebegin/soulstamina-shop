@@ -15,7 +15,7 @@ const Header = ({ background, isMobile }) => {
             <article className="media">
               <figure className="is-left"></figure>
               <figure className="is-left"></figure>
-              <div className="media-content">
+              <div>
                 {isMobile ? (
                   <Parallax type="small" background={bgImage} />
                 ) : (
