@@ -1,40 +1,34 @@
 import React from "react";
 import { Link } from "gatsby";
+import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
 
 export default function productCardLarge({ data }) {
-  const { title, description, price, image, slug, id } = data.node;
-
+  const {
+    title,
+    description,
+    price,
+    image,
+    slug,
+    productCategory: category,
+  } = data.node;
   return (
     <Card className="column">
-      {/* <div className="columns wrapper">
-          <div className="column product-img">
-            <img src={image.file.url} />
-          </div>
-          <div className="column product-info">
-            <div className="product-text">
-              <h1>{title.toLowerCase()}</h1>
-              <h2>by yana</h2>
-              <p>{description.internal.content}</p>
-            </div>
-            <div className="product-price-btn">
-              <p>
-                <span>{`$${price}`}</span>
-              </p>
-              <Link to={`/${slug}`}>
-                <button type="button">buy now</button>
-              </Link>
-            </div>
-          </div>
-        </div> */}
       <div className="wrapper columns">
         <div className="column is-half product-image">
-          <img src={image.file.url} />
+          <Link to={`/${slug}`}>
+            <img src={image.file.url} />
+          </Link>
         </div>
         <div className="column product-info">
           <div className="product-text">
-            <h1>{title.toLowerCase()}</h1>
-            <h2>by yana</h2>
+            <div className="title-container">
+              <div className="title-inner">
+                <h1>{title.toLowerCase()}</h1>
+                <h2>by yana</h2>
+              </div>
+              <CategoryButton category={category} title={category} />
+            </div>
             <p>{description.internal.content}</p>
           </div>
         </div>
@@ -44,8 +38,6 @@ export default function productCardLarge({ data }) {
 }
 
 const Card = styled.div`
-  border: 1px solid red;
-
   .wrapper {
     border-radius: 7px 7px 7px 7px;
     /* VIA CSS MATIC https://goo.gl/cIbnS */
@@ -59,25 +51,38 @@ const Card = styled.div`
     padding: 0;
     img {
       border-radius: 7px 0 0 7px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      height: 300px;
+      margin: auto;
     }
   }
 
   .product-info {
-    padding: 0 1em;
+    padding: 1.5em;
+    padding-top: 1em;
     .product-text {
       h1 {
         font-size: 34px;
         color: #474747;
         font-family: "Playfair Display", serif;
       }
-      h2 {
-        font-size: 13px;
-        font-weight: 400;
-        text-transform: uppercase;
-        color: #d2d2d2;
-        letter-spacing: 0.2em;
+      .title-container {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        .title-inner {
+          display: flex;
+          flex-direction: column;
+          h2 {
+            font-size: 13px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #d2d2d2;
+            letter-spacing: 0.2em;
+          }
+        }
       }
       p {
         color: #8d8d8d;

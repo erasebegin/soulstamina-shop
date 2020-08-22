@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "gatsby";
+import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
 
 export default function productCard({ data }) {
-  const { title, description, price, image, slug, id } = data.node;
+  const {
+    title,
+    description,
+    price,
+    image,
+    slug,
+    productCategory: category,
+  } = data.node;
 
   return (
     <Card className="column">
@@ -16,9 +24,12 @@ export default function productCard({ data }) {
           </figure>
         </div>
         <div className="card-content">
-          <Link to={`/${slug}`}>
-            <p className="title mb-3">{title.toLowerCase()}</p>
-          </Link>
+          <div className="title-container">
+            <Link to={`/${slug}`}>
+              <p className="title">{title.toLowerCase()}</p>
+            </Link>
+            <CategoryButton title={category} category={category} />
+          </div>
           <div className="content">
             <p>{description.internal.content}</p>
           </div>
@@ -39,7 +50,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-top: auto;
+    margin-bottom: 2em;
   }
 
   .footer {
@@ -49,16 +60,26 @@ const Card = styled.div`
 
     p {
       width: 100%;
-      text-align: right;
+      text-align: center;
       font-family: "Playfair Display", serif;
       font-weight: 400;
       font-size: 1.3rem;
     }
   }
 
-  .title {
-    font-family: "Playfair Display", serif;
-    margin-top: -4%;
+  .title-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+    margin-top: -8%;
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      line-height: 0;
+    }
   }
 
   img {

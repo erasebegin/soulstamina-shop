@@ -61,7 +61,7 @@ const Nav = styled.nav`
 
   .nn{
     &hover{
-      color: #BC9F75;
+      color: #BC9F75 !important;
     }
   }
 `;

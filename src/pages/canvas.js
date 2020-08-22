@@ -2,18 +2,30 @@ import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import Header from "../components/header/header";
 import ProductList from "../components/products/ProductList";
 import FeaturedProduct from "../components/products/productCardFeatured";
-import Title from "../components/globals/Title"
+import Title from "../components/globals/Title";
 import SEO from "../components/seo";
 
-const IndexPage = ({ data }) => {
+const CanvasPage = ({ data }) => {
   const [isMobile, setIsMobile] = useState(null);
+  const [canvasList, setCanvasList] = useState(null);
+
+  const removeFeaturedItem = () => {
+    const newList = data.canvases.edges.filter((item) => {
+      return item.node.id !== data.featured.edges[0].node.id;
+    });
+
+    setCanvasList(newList);
+  };
 
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+
+    removeFeaturedItem()
   }, []);
+
+  console.log({canvasList})
 
   window.onresize = function() {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
@@ -21,13 +33,15 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO title="Canvases" />
       <Layout>
-        <Header background={data.img} isMobile={isMobile} />
-        <FeaturedProduct data={data.recent.edges[0].node} isMobile={isMobile} />
+        <Title title="canvases." subtitle="by soulstamina" />
+        <FeaturedProduct
+          data={data.featured.edges[0].node}
+          isMobile={isMobile}
+        />
         <section className="section recent-products">
-          <Title title="recent."/>
-          <ProductList items={data.recent.edges} isMobile={isMobile} />
+          <ProductList items={canvasList} isMobile={isMobile} />
         </section>
       </Layout>
     </>
@@ -36,36 +50,32 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    img: contentfulDesignElement {
-      homePageHeaderImage {
-        file {
-          url
-        }
-      }
-    }
-    product: allContentfulProduct(sort: { fields: createdAt }) {
+    featured: allContentfulProduct(
+      filter: { featured: { eq: true } }
+      sort: { fields: createdAt }
+    ) {
       edges {
         node {
-          description {
-            internal {
-              content
-            }
-          }
+          id
+          price
+          slug
+          productCategory
+          title
           image {
             file {
               url
             }
           }
-          id
-          price
-          productCategory
-          slug
-          title
+          description {
+            internal {
+              content
+            }
+          }
         }
       }
     }
-    recent: allContentfulProduct(
-      filter: { featured: { eq: true } }
+    canvases: allContentfulProduct(
+      filter: { productCategory: { eq: "Canvas" } }
       sort: { fields: createdAt }
     ) {
       edges {
@@ -91,4 +101,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default CanvasPage;
