@@ -9,11 +9,15 @@ import Title from "../components/globals/Title"
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
-  const [isMobile, setIsMobile] = useState(null);
+  const [isMobile, setIsMobile] = useState(null); 
 
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
   }, []);
+
+  if (typeof window === 'undefined') {
+    global.window = {}
+  }
 
   window.onresize = function() {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);

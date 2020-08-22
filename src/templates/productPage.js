@@ -34,6 +34,10 @@ const ProductPage = ({ data }) => {
     setRelatedItems(related);
   };
 
+  if (typeof window === 'undefined') {
+    global.window = {}
+  }
+
   window.onresize = function() {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
   };

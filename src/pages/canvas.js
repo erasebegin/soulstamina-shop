@@ -25,7 +25,9 @@ const CanvasPage = ({ data }) => {
     removeFeaturedItem()
   }, []);
 
-  console.log({canvasList})
+  if (typeof window === 'undefined') {
+    global.window = {}
+  }
 
   window.onresize = function() {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
