@@ -19,16 +19,12 @@ export default function productCardLarge({ data }) {
           <Link to={`/${slug}`}>
             <img src={image.file.url} />
           </Link>
+          <CategoryButton category={category} title={category} size="large" />
         </div>
         <div className="column product-info">
           <div className="product-text">
-            <div className="title-container">
-              <div className="title-inner">
-                <h1>{title.toLowerCase()}</h1>
-                <h2>by yana</h2>
-              </div>
-              <CategoryButton category={category} title={category} />
-            </div>
+            <h1>{title.toLowerCase()}</h1>
+            <hr/>
             <p>{description.internal.content}</p>
           </div>
         </div>
@@ -44,11 +40,18 @@ const Card = styled.div`
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    height: 300px;
+    width: 500px;
+    min-height: 300px;
   }
 
   .product-image {
     padding: 0;
+    button {
+      position: absolute;
+      transform: translateX(-100%);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
     img {
       border-radius: 7px 0 0 7px;
       width: 100%;
@@ -61,28 +64,25 @@ const Card = styled.div`
   .product-info {
     padding: 1.5em;
     padding-top: 1em;
+    border-top: 2px solid #b18d17;
     .product-text {
       h1 {
         font-size: 34px;
         color: #474747;
         font-family: "Playfair Display", serif;
       }
-      .title-container {
-        display: flex;
-        align-items: center;
-        gap: 1em;
-
-        .title-inner {
-          display: flex;
-          flex-direction: column;
-          h2 {
-            font-size: 13px;
-            font-weight: 400;
-            text-transform: uppercase;
-            color: #d2d2d2;
-            letter-spacing: 0.2em;
-          }
-        }
+      hr {
+        margin-top: 1em;
+      }
+      h2 {
+        font-size: 13px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #d2d2d2;
+        letter-spacing: 0.2em;
+        line-height: .3em;
+        margin-bottom: 1em;
+        margin-left: .5em;
       }
       p {
         color: #8d8d8d;

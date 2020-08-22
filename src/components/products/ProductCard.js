@@ -57,6 +57,7 @@ const Card = styled.div`
     margin-top: auto;
     width: 100%;
     padding: 1em;
+    border-top: 2px solid #b18d17;
 
     p {
       width: 100%;
