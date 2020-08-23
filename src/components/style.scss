@@ -11,7 +11,7 @@
 .gradientBg {
 	font-family: 'Heebo', sans-serif;
   display: flex;
-  background: linear-gradient(to right, $primary-color, $secondary-color);
+  background: linear-gradient(to right, $background-color, $primary-color);
 }
 
 .alt-font {
@@ -33,6 +33,6 @@
     color: black;
   }
   a:hover {
-    color: $secondary-color;
+    color: $primary-color;
   }
 }

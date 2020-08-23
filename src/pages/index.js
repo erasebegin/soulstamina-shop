@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
       <Layout>
         <Header background={data.img} isMobile={isMobile} />
         <FeaturedProduct data={data.recent.edges[0].node} isMobile={isMobile} />
-        <CategorySelector data={data.recent}/>
+        {/* <CategorySelector data={data.recent}/> */}
         <section className="section recent-products">
           <Title title="recent."/>
           <ProductList items={data.recent.edges} isMobile={isMobile} />

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function CategorySelector() {
   const categories = [
-    { title: "canvases", slug: "canvas" },
+     { title: "canvases", slug: "canvas" },
     { title: "postcards", slug: "postcards" },
     { title: "prints", slug: "prints" },
   ];
@@ -14,7 +14,7 @@ export default function CategorySelector() {
         {categories.map((category) => {
           return (
             <Link className="column" to={category.slug}>
-              <div >
+              <div className="category-card">
                 <h1>{category.title}</h1>
               </div>
             </Link>
@@ -28,5 +28,11 @@ export default function CategorySelector() {
 const Container = styled.div`
   * {
     border: 1px solid red;
+  }
+
+  .category-card {
+      background {
+
+      }
   }
 `;

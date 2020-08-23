@@ -9,6 +9,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const ProductPage = ({ data }) => {
+  console.log(data.singleProduct);
   const {
     id,
     title,
@@ -46,7 +47,7 @@ const ProductPage = ({ data }) => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
     getRelatedItems();
   }, []);
-  console.log({ relatedItems });
+
   return (
     <Layout>
       <SEO title={title} />
@@ -67,9 +68,9 @@ const ProductPage = ({ data }) => {
                 </article>
               </MDXProvider>
             ) : (
-              ""
+              <article>&nbsp;</article>
             )}
-            <div className="columns more-list">
+            <div className="section more-list">
               <h2 className="heading is-lowercase">
                 more in the <span>{productCategory}</span> category
               </h2>
@@ -125,6 +126,7 @@ export const pageQuery = graphql`
       title
       productCategory
       slug
+      price
       image {
         file {
           url
