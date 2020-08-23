@@ -6,6 +6,7 @@ import Header from "../components/header/header";
 import ProductList from "../components/products/ProductList";
 import FeaturedProduct from "../components/products/productCardFeatured";
 import Title from "../components/globals/Title"
+import CategorySelector from "../components/globals/CategorySelector";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
@@ -29,6 +30,7 @@ const IndexPage = ({ data }) => {
       <Layout>
         <Header background={data.img} isMobile={isMobile} />
         <FeaturedProduct data={data.recent.edges[0].node} isMobile={isMobile} />
+        <CategorySelector data={data.recent}/>
         <section className="section recent-products">
           <Title title="recent."/>
           <ProductList items={data.recent.edges} isMobile={isMobile} />

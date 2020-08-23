@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function CategoryButton({ title, category, size }) {
   return (
     <Link to={`/${category.toLowerCase()}`}>
-      <Button size={size}>{title}</Button>
+      <Button size={size}>{title.toLowerCase()}</Button>
     </Link>
   );
 }

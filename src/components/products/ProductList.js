@@ -2,20 +2,26 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import ProductCardLarge from "./ProductCardLarge";
 
-export default function ProductList({ items, isMobile, limit }) {
-  console.log({items})
+export default function ProductList({
+  items,
+  isMobile,
+  limit,
+  cardClass,
+  columnSize,
+}) {
+  console.log({ items });
   if (items) {
     const products = items.slice(0, limit);
     return (
       <section className="section">
         <div className="container">
-          <div className="columns is-desktop is-multiline">
+          <div className={cardClass}>
             {products.map((product) => {
               if (isMobile === true) {
                 return <ProductCard data={product} key={product.node.id} />;
               } else {
                 return (
-                  <div className="column is-half">
+                  <div className={`column ${columnSize}`}>
                     <ProductCardLarge data={product} key={product.node.id} />
                   </div>
                 );
@@ -32,4 +38,6 @@ export default function ProductList({ items, isMobile, limit }) {
 
 ProductList.defaultProps = {
   limit: 5,
+  cardClass: "columns is-desktop is-multiline",
+  columnSize: "is-half",
 };

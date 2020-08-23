@@ -34,8 +34,8 @@ const ProductPage = ({ data }) => {
     setRelatedItems(related);
   };
 
-  if (typeof window === 'undefined') {
-    global.window = {}
+  if (typeof window === "undefined") {
+    global.window = {};
   }
 
   window.onresize = function() {
@@ -69,8 +69,18 @@ const ProductPage = ({ data }) => {
             ) : (
               ""
             )}
+            <div className="columns more-list">
+              <h2 className="heading is-lowercase">
+                more in the <span>{productCategory}</span> category
+              </h2>
+              <ProductList
+                limit={3}
+                items={relatedItems}
+                isMobile={isMobile}
+                cardClass="columns is-desktop is-centered"
+              />
+            </div>
           </div>
-          <ProductList limit={3} items={relatedItems} isMobile={isMobile} />
         </div>
       </Container>
     </Layout>
@@ -85,8 +95,26 @@ const Container = styled.div`
     justify-content: center;
     max-width: 700px;
     padding: 1em;
+    font-size: 1.3rem;
+    margin-bottom: 2em;
     p {
       margin: 1em 0;
+    }
+  }
+
+  .more-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    h2 {
+      margin-top: 1em;
+      font-size: 2rem;
+      font-family: "Playfair Display", serif;
+
+      span {
+        font-weight: bold;
+      }
     }
   }
 `;

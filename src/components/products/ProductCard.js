@@ -26,7 +26,7 @@ export default function productCard({ data }) {
         <div className="card-content">
           <div className="title-container">
             <Link to={`/${slug}`}>
-              <p className="title">{title.toLowerCase()}</p>
+              <p className="card-title">{title.toLowerCase()}</p>
             </Link>
             <CategoryButton title={category} category={category} />
           </div>
@@ -57,7 +57,7 @@ const Card = styled.div`
     margin-top: auto;
     width: 100%;
     padding: 1em;
-    border-top: 2px solid #b18d17;
+    border-top: 2px solid #6e6546;
 
     p {
       width: 100%;
@@ -76,10 +76,10 @@ const Card = styled.div`
     gap: 1em;
     margin-bottom: 1em;
     margin-top: -8%;
-    .title {
+    .card-title {
       font-family: "Playfair Display", serif;
-      font-size: 1.8rem;
-      line-height: 0;
+      font-size: 1.6rem;
+      color: #6e6546;
     }
   }
 
