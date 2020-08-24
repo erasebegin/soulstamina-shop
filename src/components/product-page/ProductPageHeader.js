@@ -70,7 +70,6 @@ const Container = styled.div`
 
   .product-image-main {
     border-radius: 7px;
-    height: 300px;
     margin: auto;
     object-fit: cover;
     order: 2;
@@ -78,6 +77,7 @@ const Container = styled.div`
     @media (min-width: 600px) {
       border-radius: 7px 0 0 7px;
       max-width: 100%;
+      max-height: 70vh;
     }
   }
 

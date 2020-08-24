@@ -10,7 +10,7 @@ import CategorySelector from "../components/globals/CategorySelector";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
-  const [isMobile, setIsMobile] = useState(null); 
+  const [isMobile, setIsMobile] = useState(true); 
 
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);

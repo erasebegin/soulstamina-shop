@@ -61,6 +61,11 @@ const Container = styled.div`
   width: 100vw;
   z-index: 0;
   overflow: hidden;
+  border: 1px solid green;
+
+  * {
+    border: 1px solid red;
+  }
 
   .parallax-container {
     width: 100%;
