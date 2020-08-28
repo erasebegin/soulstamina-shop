@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useProductData from "../hooks/useProductData";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
@@ -9,7 +10,6 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const ProductPage = ({ data }) => {
-  console.log(data.singleProduct);
   const {
     id,
     title,
@@ -20,8 +20,6 @@ const ProductPage = ({ data }) => {
     body,
     productCategory,
   } = data.singleProduct;
-
-  console.log({ productCategory });
 
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
@@ -60,6 +58,7 @@ const ProductPage = ({ data }) => {
               price={price}
               description={description}
               gallery={gallery}
+              id={id}
             />
             {body ? (
               <MDXProvider>

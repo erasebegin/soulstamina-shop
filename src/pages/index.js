@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
 
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
-  }, []);
+  });
 
   if (typeof window === 'undefined') {
     global.window = {}

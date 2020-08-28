@@ -9,7 +9,6 @@ export default function ProductList({
   cardClass,
   columnSize,
 }) {
-  console.log({ items });
   if (items) {
     const products = items.slice(0, limit);
     return (

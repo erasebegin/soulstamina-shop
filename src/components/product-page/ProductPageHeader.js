@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaCartPlus } from "react-icons/fa";
 import styled from "styled-components";
 import ImageCarousel from "./ImageCarousel";
+import AddToCartButton from "../cart/AddToCartButton";
 
 export default function ProductPageHeader({
   title,
@@ -9,12 +9,13 @@ export default function ProductPageHeader({
   price,
   description,
   gallery,
+  id,
 }) {
   const [currDispImg, setCurrDispImg] = useState(image.file.url);
   const setCurrImg = (currImg) => {
     setCurrDispImg(currImg);
   };
-  console.log({ price });
+
   return (
     <>
       <Container className="section is-desktop is-centered my-4">
@@ -39,9 +40,7 @@ export default function ProductPageHeader({
             <div className="price-button-container">
               <p>${price}</p>
               <div className="buttons">
-                <button className="button is-warning is-light is-size-3 is-size-4-mobile">
-                  <FaCartPlus />
-                </button>
+                <AddToCartButton id={id}/>
                 <button className="button is-warning is-light is-size-4 is-size-5-mobile">
                   |&nbsp;&nbsp;BUY NOW &gt;&gt;
                 </button>
