@@ -96,7 +96,7 @@ const Nav = styled.nav`
     min-height: 60px;
     margin: 1em;
     margin-right: 2em;
-    @media(max-width: 400px) {
+    @media(max-width: 600px) {
     min-height: 30px;
   }
   }
