@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Soulstamina",
+    title: "Home",
     author: "Yana",
     imageUrl: "https://i.imgur.com/Vz81GEl.png",
     description: "Welcome to the Soulstamina shop!",

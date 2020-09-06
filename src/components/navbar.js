@@ -52,11 +52,9 @@ const Navbar = () => {
           <Link to="/postcards" className="navbar-item nn">
             Postcards
           </Link>
-          <Link to="/cart" className="navbar-item">
             <button class="snipcart-checkout checkout-button">
               <RiShoppingCart2Fill />
             </button>
-          </Link>
         </div>
       </div>
     </Nav>
