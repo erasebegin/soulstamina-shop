@@ -1,49 +1,100 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
 
-import bulmaCarousel from "bulma-carousel";
-import "bulma-carousel/dist/css/bulma-carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { boolean, number } from "@storybook/addon-knobs";
 
-import img1 from "../images/1_iris-sunset-2_web_sign-sm.jpg";
-import img2 from "../images/3_equal-but-different_2_WEB_sign-sm.jpg";
-import img3 from "../images/4_introvert_main_sign-sm.jpg";
-import img4 from "../images/5_winter_sign-sm.jpg";
+export default function HeroCarousel({ data, isMobile }) {
+  const tooglesGroupId = "Toggles";
+  const valuesGroupId = "Values";
 
-export default function carousel() {
-  useEffect(() => {
-    bulmaCarousel.attach("#carousel-demo", {
-      slidesToScroll: 1,
-      slidesToShow: 3,
-      loop: true,
-      navigationSwipe: true,
-      duration: 1000,
-      autoplay: true,
-      autoplaySpeed: 8000,
-      pauseOnHover: true,
-    });
-  }, []);
+  const getConfigurableProps = () => ({
+    showArrows: boolean("showArrows", true, tooglesGroupId),
+    showStatus: boolean("showStatus", false, tooglesGroupId),
+    showIndicators: boolean("showIndicators", true, tooglesGroupId),
+    infiniteLoop: boolean("infiniteLoop", true, tooglesGroupId),
+    showThumbs: boolean("showThumbs", false, tooglesGroupId),
+    useKeyboardArrows: boolean("useKeyboardArrows", true, tooglesGroupId),
+    autoPlay: boolean("autoPlay", true, tooglesGroupId),
+    stopOnHover: boolean("stopOnHover", true, tooglesGroupId),
+    swipeable: boolean("swipeable", true, tooglesGroupId),
+    dynamicHeight: boolean("dynamicHeight", true, tooglesGroupId),
+    emulateTouch: boolean("emulateTouch", true, tooglesGroupId),
+    thumbWidth: number("thumbWidth", 100, {}, valuesGroupId),
+    selectedItem: number("selectedItem", 0, {}, valuesGroupId),
+    interval: number("interval", 5000, {}, valuesGroupId),
+    transitionTime: number("transitionTime", 300, {}, valuesGroupId),
+    swipeScrollTolerance: number("swipeScrollTolerance", 5, {}, valuesGroupId),
+  });
+
   return (
-    <section className="hero is-medium has-carousel">
-      <div
-        id="carousel-demo"
-        className="hero-carousel"
-        style={{ objectFit: "cover" }}
-      >
-        <div className="item-1">
-          <img src={img1} />
-        </div>
-        <div className="item-2">
-          <img src={img2} />
-        </div>
-        <div className="item-3">
-          <img src={img3} />
-        </div>
-        <div className="item-3">
-          <img src={img4} />
-        </div>
-      </div>
-      <div className="hero-head"></div>
-      <div className="hero-body"></div>
-      <div className="hero-foot"></div>
-    </section>
+    <Container className="hero is-medium">
+      <Carousel autoPlay infiniteLoop {...getConfigurableProps()}>
+        {data.map((item) => {
+          const defaultImage = item.node.product.image.file.url;
+          const largeImage = item.node.largeImage
+            ? item.node.largeImage.file.url
+            : null;
+          const smallImage = item.node.smallImage
+            ? item.node.smallImage.file.url
+            : null;
+
+          return (
+            <div className="img-container">
+              <Link to={`/${item.node.product.slug}`}>
+                {largeImage ? (
+                  smallImage && isMobile ? (
+                    <img src={smallImage} />
+                  ) : (
+                    <img src={largeImage} />
+                  )
+                ) : smallImage && isMobile ? (
+                  <img src={smallImage} />
+                ) : (
+                  <img src={defaultImage} />
+                )}
+              </Link>
+              <Link to={`/${item.node.product.slug}`}>
+                <Button className="legend" color={item.node.textColor}>
+                  EXPLORE
+                </Button>
+              </Link>
+            </div>
+          );
+        })}
+      </Carousel>
+    </Container>
   );
 }
+
+const Container = styled.section`
+  .img-container {
+    height: 80vh;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const Button = styled.p`
+  color: ${({ color }) => (color === "Dark" ? "black" : "#fff8ee")} !important;
+  background: none !important;
+  border: 3px solid ${({ color }) => (color === "Dark" ? "black" : "#fff8ee")} !important;
+  opacity: 100 !important;
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-family: "Heebo", sans-serif;
+  border-radius: 0 !important;
+  width: 50% !important;
+  margin-left: -25% !important;
+  transition: ease-in-out 200ms !important;
+
+  &:hover {
+    background: ${({ color }) =>
+      color === "Dark" ? "#fff8ee" : "black"} !important;
+    transition: ease-in-out 200ms !important;
+  }
+`;

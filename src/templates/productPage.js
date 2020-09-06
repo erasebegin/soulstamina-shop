@@ -18,6 +18,7 @@ const ProductPage = ({ data }) => {
     price,
     gallery,
     body,
+    slug,
     productCategory,
   } = data.singleProduct;
 
@@ -59,6 +60,7 @@ const ProductPage = ({ data }) => {
               description={description}
               gallery={gallery}
               id={id}
+              slug={slug}
             />
             {body ? (
               <MDXProvider>
@@ -108,7 +110,7 @@ const Container = styled.div`
     align-items: center;
     border-top: 1px solid lightgray;
     h2 {
-      margin-top: 1em;
+      margin: 2em 0;
       font-size: 2rem;
       font-family: "Playfair Display", serif;
 

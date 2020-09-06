@@ -4,6 +4,10 @@
   "version": "1.10.3",
   "author": "Aman Mittal <amandeepmittal@live.com>",
   "dependencies": {
+    "@adyen/api-library": "^5.0.1",
+    "@glidejs/glide": "^3.4.1",
+    "@loadable/component": "^5.13.1",
+    "@storybook/addon-knobs": "^6.0.21",
     "bulma": "^0.9.0",
     "bulma-carousel": "^4.0.4",
     "contentful": "^7.14.6",
@@ -16,6 +20,7 @@
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.19",
     "gatsby-plugin-sitemap": "^2.4.11",
+    "gatsby-plugin-snipcartv3": "^2.3.2",
     "gatsby-source-contentful": "^2.3.37",
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-transformer-sharp": "^2.5.11",
@@ -25,6 +30,9 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
     "react-rellax": "^1.0.3",
+    "react-responsive-carousel": "^3.2.9",
+    "react-slick": "0.26",
+    "slick-carousel": "^1.8.1",
     "source": "^0.0.3",
     "styled-components": "^5.1.1"
   },
@@ -38,7 +46,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"

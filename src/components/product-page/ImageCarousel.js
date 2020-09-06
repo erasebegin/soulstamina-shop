@@ -34,7 +34,7 @@ const GalleryContainer = styled.div`
   margin: auto;
 
   @media (min-width: 780px) {
-    max-width: 100px;
+    max-width: 100%;
     justify-content: flex-start;
     margin-left: -10%;
   }
@@ -43,7 +43,6 @@ const GalleryContainer = styled.div`
     object-fit: cover;
     transition: 200ms;
     margin: 0 0.5em;
-    border-radius: 8px;
 
     @media (min-width: 600px) {
       max-width: 100px;
@@ -62,14 +61,14 @@ const GalleryContainer = styled.div`
     justify-content: center;
     background: #bc9f75;
     padding: 0.5em;
-    padding-left: 1.5em;
     margin: 0.5em;
-    border-radius: 10px;
+
+    &:first-child {
+      margin-left: 1em;
+    }
 
     @media (min-width: 780px) {
-      border-radius: 0;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      padding-left: 2em;
     }
   }
 `;

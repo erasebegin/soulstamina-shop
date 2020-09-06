@@ -68,7 +68,6 @@ export default function productCardFeatured({ data, isMobile }) {
 }
 
 const CardSmall = styled.div`
-  border-radius: 7px 7px 7px 7px;
   /* VIA CSS MATIC https://goo.gl/cIbnS */
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -98,7 +97,6 @@ const CardSmall = styled.div`
     img {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 30px 0 rgba(0, 0, 0, 0.19);
-      border-radius: 0.5rem;
       border-top-left-radius: 0;
       max-height: 96.5%;
       margin: 0 auto;
@@ -144,8 +142,10 @@ const CardSmall = styled.div`
 `;
 
 const CardLarge = styled.div`
+margin: auto;
+margin-top: 2em;
+max-width: 1100px;
   .wrapper {
-    border-radius: 7px 7px 7px 7px;
     /* VIA CSS MATIC https://goo.gl/cIbnS */
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -162,7 +162,6 @@ const CardLarge = styled.div`
       -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 30px 0 rgba(0, 0, 0, 0.19);
-      border-radius: 0.5rem;
       width: 100%;
       max-height: 96.5%;
       margin: 0 auto;

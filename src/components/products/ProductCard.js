@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "gatsby";
 import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
+import CartButton from "../cart/AddToCartButton";
 
 export default function productCard({ data }) {
   const {
+    id,
     title,
     description,
     price,
@@ -35,7 +37,15 @@ export default function productCard({ data }) {
           </div>
         </div>
         <div className="footer">
-          <p className="">{`$${price}`}</p>
+          <p className="price">${price}</p>
+          <CartButton
+            id={id}
+            title={title}
+            description={description.internal.content}
+            image={image}
+            slug={slug}
+            price={price}
+          />
         </div>
       </div>
     </Card>
@@ -45,7 +55,6 @@ export default function productCard({ data }) {
 const Card = styled.div`
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 0.5rem;
 
     display: flex;
     flex-direction: column;
@@ -85,7 +94,6 @@ const Card = styled.div`
 
   img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 0.5rem;
     max-width: 96.5%;
     max-height: 96.5%;
     margin: 0 auto;

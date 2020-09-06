@@ -1,5 +1,3 @@
-import React from "react"
-import { CartProvider } from "./src/CartContext"
-export const wrapRootElement = ({ element }) => (
-  <CartProvider>{element}</CartProvider>
-)
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";

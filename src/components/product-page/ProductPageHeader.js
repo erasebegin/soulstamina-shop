@@ -10,6 +10,7 @@ export default function ProductPageHeader({
   description,
   gallery,
   id,
+  slug,
 }) {
   const [currDispImg, setCurrDispImg] = useState(image.file.url);
   const setCurrImg = (currImg) => {
@@ -40,7 +41,14 @@ export default function ProductPageHeader({
             <div className="price-button-container">
               <p>${price}</p>
               <div className="buttons">
-                <AddToCartButton id={id}/>
+                <AddToCartButton
+                  id={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  description={description.description}
+                  slug={slug}
+                />
                 <button className="button is-warning is-light is-size-4 is-size-5-mobile">
                   |&nbsp;&nbsp;BUY NOW &gt;&gt;
                 </button>
@@ -56,7 +64,6 @@ export default function ProductPageHeader({
 const Container = styled.div`
   margin: auto;
   background: #fff8ee;
-  border-radius: 7px 7px 7px 7px;
   /* VIA CSS MATIC https://goo.gl/cIbnS */
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -68,13 +75,11 @@ const Container = styled.div`
   }
 
   .product-image-main {
-    border-radius: 7px;
     margin: auto;
     object-fit: cover;
     order: 2;
 
     @media (min-width: 600px) {
-      border-radius: 7px 0 0 7px;
       max-width: 100%;
       max-height: 70vh;
     }

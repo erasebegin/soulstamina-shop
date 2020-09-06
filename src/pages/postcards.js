@@ -5,20 +5,28 @@ import Layout from "../components/layout";
 import ProductList from "../components/products/ProductList";
 import FeaturedProduct from "../components/products/productCardFeatured";
 import Title from "../components/globals/Title";
-import Carousel from "../components/carousel";
 import SEO from "../components/seo";
 
-import "../components/style.scss";
+const PostcardsPage = ({ data }) => {
+  const [isMobile, setIsMobile] = useState(null);
+  const [list, setList] = useState(null);
 
-const IndexPage = ({ data }) => {
-  const [isMobile, setIsMobile] = useState(true);
+  const removeFeaturedItem = () => {
+    const newList = data.postcards.edges.filter((item) => {
+      return item.node.id !== data.featured.edges[0].node.id;
+    });
+
+    setList(newList);
+  };
 
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
-  });
 
-  if (typeof window === "undefined") {
-    global.window = {};
+    removeFeaturedItem()
+  }, []);
+
+  if (typeof window === 'undefined') {
+    global.window = {}
   }
 
   window.onresize = function() {
@@ -27,16 +35,15 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO title="Postcards" />
       <Layout>
-        <Carousel data={data.hero.edges} isMobile={isMobile} />
+        <Title title="postcards." subtitle="by soulstamina" />
         <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}
         />
         <section className="section recent-products">
-          <Title title="recent." />
-          <ProductList items={data.featured.edges} isMobile={isMobile} />
+          <ProductList items={list} isMobile={isMobile} />
         </section>
       </Layout>
     </>
@@ -45,59 +52,32 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    hero: allContentfulHomePageHeroSlide(
-      limit: 5
-      sort: { fields: updatedAt }
+    featured: allContentfulProduct(
+      filter: { featured: { eq: true }, productCategory: { eq: "Postcards" } }
+      sort: { fields: createdAt }
     ) {
       edges {
         node {
-          textColor
+          id
+          price
+          slug
+          productCategory
           title
-          largeImage {
-            file {
-              url
-            }
-          }
-          smallImage {
-            file {
-              url
-            }
-          }
-          product {
-            image {
-              file {
-                url
-              }
-            }
-            slug
-            title
-          }
-        }
-      }
-    }
-    product: allContentfulProduct(sort: { fields: createdAt }) {
-      edges {
-        node {
-          description {
-            internal {
-              content
-            }
-          }
           image {
             file {
               url
             }
           }
-          id
-          price
-          productCategory
-          slug
-          title
+          description {
+            internal {
+              content
+            }
+          }
         }
       }
     }
-    featured: allContentfulProduct(
-      filter: { featured: { eq: true } }
+    postcards: allContentfulProduct(
+      filter: { productCategory: { eq: "Postcards" } }
       sort: { fields: createdAt }
     ) {
       edges {
@@ -123,4 +103,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default PostcardsPage;
