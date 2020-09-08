@@ -8,7 +8,7 @@ import ProductPageHeader from "../components/product-page/ProductPageHeader";
 import ProductList from "../components/products/ProductList";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-
+ 
 const ProductPage = ({ data }) => {
   const {
     id,
@@ -21,6 +21,8 @@ const ProductPage = ({ data }) => {
     slug,
     productCategory,
   } = data.singleProduct;
+
+  console.log({body})
 
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);

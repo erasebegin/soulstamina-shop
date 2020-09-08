@@ -52,7 +52,10 @@ const Navbar = () => {
           <Link to="/postcards" className="navbar-item nn">
             Postcards
           </Link>
-            <button class="snipcart-checkout checkout-button">
+            
+        </div>
+        <div className="navbar-end">
+        <button className="snipcart-checkout checkout-button">
               <RiShoppingCart2Fill />
             </button>
         </div>
@@ -84,6 +87,9 @@ const Nav = styled.nav`
     font-size: 1.3rem;
     cursor: pointer;
     transition: ease-in-out 200ms;
+    height: 30px;
+    margin: auto;
+    margin-right: 2em;
 
     &:hover {
       background: #BC9F75;
