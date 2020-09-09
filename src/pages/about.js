@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 export default function about({ data }) {
   const aboutData = data.about.edges[0].node;
-  console.log({ aboutData });
+  
   return (
     <>
       <SEO title="About" />
@@ -69,17 +69,17 @@ const Container = styled.div`
       align-items: center;
       justify-content: start;
       .image-container {
-        padding: .5em;
+        padding: 0.5em;
         margin-left: 10%;
         max-width: 300px;
         object-fit: cover;
         transform: rotate(-5deg);
         z-index: 1;
         background: url(https://i.ibb.co/6bNQ0t0/29-05-13-paper07.jpg);
-        
-        @media(min-width: 900px) {
+
+        @media (min-width: 900px) {
           padding: 1em;
-      } 
+        }
       }
       .image2 {
         transform: rotate(1deg);
@@ -97,9 +97,9 @@ const Container = styled.div`
         margin: 0;
         max-width: 300px;
 
-        @media(min-width: 900px) {
+        @media (min-width: 900px) {
           max-width: 200px;
-      } 
+        }
       }
 
       .title-container {
@@ -126,7 +126,7 @@ const Container = styled.div`
     }
 
     .header-text-container {
-      margin: 0 .5em;
+      margin: 0 0.5em;
       padding: 1em;
       padding-left: 2em;
       max-width: 800px;

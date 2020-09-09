@@ -22,8 +22,6 @@ const ProductPage = ({ data }) => {
     productCategory,
   } = data.singleProduct;
 
-  console.log({body})
-
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
