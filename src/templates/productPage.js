@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useProductData from "../hooks/useProductData";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
@@ -21,7 +20,7 @@ const ProductPage = ({ data }) => {
     slug,
     productCategory,
   } = data.singleProduct;
-
+    
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
