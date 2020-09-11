@@ -63,14 +63,16 @@ const Card = styled.div`
   }
 
   .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: auto;
     width: 100%;
-    padding: 1em;
+    padding: 1em 2em;
     border-top: 2px solid #f1de9e;
 
     p {
       width: 100%;
-      text-align: center;
       font-family: "Playfair Display", serif;
       font-weight: 400;
       font-size: 1.3rem;
