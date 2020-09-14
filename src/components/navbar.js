@@ -56,7 +56,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
         <button className="snipcart-checkout checkout-button">
-              <RiShoppingCart2Fill />
+              <RiShoppingCart2Fill size="1.2em"/>
             </button>
         </div>
       </div>
@@ -84,17 +84,24 @@ const Nav = styled.nav`
     border: none;
     color: #BC9F75;
     background: none;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     cursor: pointer;
     transition: ease-in-out 200ms;
     height: 30px;
     margin: auto;
     margin-right: 2em;
+    padding-left: .6em;
+
+
 
     &:hover {
       background: #BC9F75;
       color: white;
       transition: ease-in-out 200ms;
+    }
+
+    @media(min-width: 600px) {
+      padding: .1em;
     }
   }
 
@@ -102,6 +109,7 @@ const Nav = styled.nav`
     min-height: 60px;
     margin: 1em;
     margin-right: 2em;
+
     @media(max-width: 600px) {
     min-height: 30px;
   }

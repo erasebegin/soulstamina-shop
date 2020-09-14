@@ -60,6 +60,7 @@ const ProductPage = ({ data }) => {
               gallery={gallery}
               id={id}
               slug={slug}
+              isMobile={isMobile}
             />
             {body ? (
               <MDXProvider>

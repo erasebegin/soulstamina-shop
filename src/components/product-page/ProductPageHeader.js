@@ -11,6 +11,7 @@ export default function ProductPageHeader({
   gallery,
   id,
   slug,
+  isMobile,
 }) {
   const [currDispImg, setCurrDispImg] = useState(image.file.url);
   const setCurrImg = (currImg) => {
@@ -41,17 +42,26 @@ export default function ProductPageHeader({
             <div className="price-button-container">
               <p>${price}</p>
               <div className="buttons">
-                <AddToCartButton
-                  id={id}
-                  title={title}
-                  image={image}
-                  price={price}
-                  description={description.description}
-                  slug={slug}
-                />
-                <button className="button is-warning is-light is-size-4 is-size-5-mobile">
-                  |&nbsp;&nbsp;BUY NOW &gt;&gt;
-                </button>
+                {isMobile ? (
+                  <AddToCartButton
+                    id={id}
+                    title={title}
+                    image={image}
+                    price={price}
+                    description={description.description}
+                    slug={slug}
+                  />
+                ) : (
+                  <AddToCartButton
+                    id={id}
+                    title={title}
+                    image={image}
+                    price={price}
+                    description={description.description}
+                    slug={slug}
+                    alt
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -122,15 +132,8 @@ const Container = styled.div`
         justify-content: center;
         padding: 0;
         padding-left: 1em;
-        background: #f1de9e;
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
-        button {
-          font-weight: 100;
-          padding: 0;
-          margin-right: 0.5em;
-          background: none;
-        }
       }
     }
 
@@ -150,7 +153,7 @@ const Container = styled.div`
         padding: 1em;
       }
       .price-button-container {
-        max-width: 90%;
+        align-items: start;
       }
     }
   }

@@ -30,10 +30,10 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <Layout>
         <Carousel data={data.hero.edges} isMobile={isMobile} />
-        <FeaturedProduct
+        {/* <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}
-        />
+        /> */}
         <section className="section recent-products">
           <Title title="recent." />
           <ProductList items={data.featured.edges} isMobile={isMobile} />
@@ -75,27 +75,6 @@ export const query = graphql`
         }
       }
     }
-    product: allContentfulProduct(sort: { fields: createdAt }) {
-      edges {
-        node {
-          description {
-            internal {
-              content
-            }
-          }
-          image {
-            file {
-              url
-            }
-          }
-          id
-          price
-          productCategory
-          slug
-          title
-        }
-      }
-    }
     featured: allContentfulProduct(
       filter: { featured: { eq: true } }
       sort: { fields: createdAt }
@@ -107,9 +86,14 @@ export const query = graphql`
           slug
           productCategory
           title
-          image {
-            file {
-              url
+          large: image {
+            fixed(height: 400, width: 250, resizingBehavior: CROP) {
+              ...GatsbyContentfulFixed_tracedSVG
+            }
+          }
+          small: image {
+            fixed(height: 250, width: 300, resizingBehavior: CROP) {
+              ...GatsbyContentfulFixed_tracedSVG
             }
           }
           description {

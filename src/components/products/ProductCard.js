@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import Img from "gatsby-image";
 import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
 import CartButton from "../cart/AddToCartButton";
@@ -13,15 +14,16 @@ export default function productCard({ data }) {
     image,
     slug,
     productCategory: category,
+    small
   } = data.node;
 
   return (
     <Card className="column">
       <div className="card card-equal-height">
         <div className="card-image">
-          <figure className="image is-4by3">
+          <figure className="image">
             <Link to={`/${slug}`}>
-              <img src={image.file.url} alt="a random image" />
+              <Img fixed={small.fixed} className="product-image" alt="a random image" />
             </Link>
           </figure>
         </div>
@@ -94,12 +96,13 @@ const Card = styled.div`
     }
   }
 
-  img {
+  .product-image {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-    max-width: 96.5%;
-    max-height: 96.5%;
+    /* max-width: 96.5%;
+    max-height: 96.5%; */
     margin: 0 auto;
     margin-top: -3.5%;
+    margin-left: -2%;
     object-fit: cover;
   }
 `;
