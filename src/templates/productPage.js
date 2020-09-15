@@ -135,7 +135,7 @@ export const pageQuery = graphql`
       price
       fluid: image {
         fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       thumbnail: image {
@@ -153,12 +153,12 @@ export const pageQuery = graphql`
       }
       galleryThumbnail: gallery {
         fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
-          ...GatsbyContentfulFixed_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       galleryFluid: gallery {
         fluid(resizingBehavior: FILL, cropFocus: CENTER) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
     }
@@ -172,7 +172,7 @@ export const pageQuery = graphql`
           }
           fluid: image {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
           id
