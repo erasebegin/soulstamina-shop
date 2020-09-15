@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Img from "gatsby-image"
 import styled from "styled-components";
 import ImageCarousel from "./ImageCarousel";
@@ -15,7 +15,9 @@ export default function ProductPageHeader({
   slug,
   isMobile,
 }) {
-  const [currDispImg, setCurrDispImg] = useState(galleryFluid[0].fluid);
+  const [currDispImg, setCurrDispImg] = useState(null);
+
+  useEffect(()=>{setCurrDispImg(galleryFLuid[0].fluid)},[])
 
   const setCurrImg = (index) => {
     setCurrDispImg(galleryFluid[index].fluid);

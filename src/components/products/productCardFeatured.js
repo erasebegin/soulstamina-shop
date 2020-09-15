@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
 export default function productCardFeatured({ data, isMobile }) {
   const { title, description, fluid, slug } = data;
+
+  // A hack to fix build bug where fluid image is not available at the time it is called
+
+  const [image, setImage] = useState(null)
+
+  useEffect(
+    ()=>{
+      setImage(fluid.fluid)
+    }, []
+  )
+
   if (isMobile) {
     return (
       <div className="section">
@@ -14,7 +25,7 @@ export default function productCardFeatured({ data, isMobile }) {
           </div>
           <div className="product-image">
             <Link to={`/${slug}`}>
-              <Img fluid={fluid.fluid} className="main-image"/>
+              <Img fluid={image} className="main-image"/>
             </Link>
           </div>
           <div className="column product-info">
@@ -41,7 +52,7 @@ export default function productCardFeatured({ data, isMobile }) {
           <div className="columns wrapper">
             <div className="column is-one-third product-image">
               <Link to={`/${slug}`}>
-                <Img fluid={fluid.fluid} className="main-image" />
+                <Img fluid={image} className="main-image" />
               </Link>
             </div>
             <div className="column product-info">
