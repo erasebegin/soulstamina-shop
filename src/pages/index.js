@@ -88,17 +88,17 @@ export const query = graphql`
           title
           large: image {
             fixed(height: 400, width: 250, resizingBehavior: CROP) {
-              ...GatsbyContentfulFixed_tracedSVG
+              ...GatsbyContentfulFixed
             }
           }
           small: image {
             fixed(height: 250, width: 300, resizingBehavior: CROP) {
-              ...GatsbyContentfulFixed_tracedSVG
+              ...GatsbyContentfulFixed
             }
           }
           fluid: image {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
           description {
