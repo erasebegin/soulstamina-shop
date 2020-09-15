@@ -153,7 +153,7 @@ export const pageQuery = graphql`
       }
       galleryThumbnail: gallery {
         fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFixed
         }
       }
       galleryFluid: gallery {
