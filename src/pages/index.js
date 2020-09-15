@@ -30,10 +30,10 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <Layout>
         <Carousel data={data.hero.edges} isMobile={isMobile} />
-        {/* <FeaturedProduct
+        <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}
-        /> */}
+        />
         <section className="section recent-products">
           <Title title="recent." />
           <ProductList items={data.featured.edges} isMobile={isMobile} />
@@ -94,6 +94,11 @@ export const query = graphql`
           small: image {
             fixed(height: 250, width: 300, resizingBehavior: CROP) {
               ...GatsbyContentfulFixed_tracedSVG
+            }
+          }
+          fluid: image {
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           description {

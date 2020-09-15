@@ -14,15 +14,15 @@ export default function productCardLarge({ data }) {
     slug,
     id,
     productCategory: category,
-    large
+    fluid
   } = data.node;
   return (
     <Card>
       <div className="product-image-container">
+      <CategoryButton category={category} title={category} size="large" />
         <Link to={`/${slug}`}>
-          <Img fixed={large.fixed} className="product-image" />
+          <Img fluid={fluid.fluid} className="product-image" />
         </Link>
-        <CategoryButton category={category} title={category} size="large" />
       </div>
       <div className="column product-info">
         <div className="top-wrapper">
@@ -64,12 +64,12 @@ const Card = styled.div`
     max-width: 50%;
     button {
       position: absolute;
-      transform: translateX(-100%);
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      /* border-top-right-radius: 0;
+      border-bottom-right-radius: 0; */
+      z-index: 100;
     }
     .product-image {
-      width: 100%;
+      width: 250px;
       height: 100%;
       margin: auto;
     }

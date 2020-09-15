@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { RiShoppingCart2Fill } from "react-icons/ri";
-import { SiEtsy } from "react-icons/si";
 
 import "./style.scss";
 import soulstaminaLogo from "../images/logo_feb.png";

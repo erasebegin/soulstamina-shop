@@ -1,21 +1,24 @@
 import React, { useState } from "react";
+import Img from "gatsby-image"
 import styled from "styled-components";
 import ImageCarousel from "./ImageCarousel";
 import AddToCartButton from "../cart/AddToCartButton";
 
 export default function ProductPageHeader({
   title,
-  image,
   price,
   description,
-  gallery,
+  galleryFluid,
+  galleryThumbnail,
+  snipcartThumbnail,
   id,
   slug,
   isMobile,
 }) {
-  const [currDispImg, setCurrDispImg] = useState(image.file.url);
-  const setCurrImg = (currImg) => {
-    setCurrDispImg(currImg);
+  const [currDispImg, setCurrDispImg] = useState(galleryFluid[0].fluid);
+
+  const setCurrImg = (index) => {
+    setCurrDispImg(galleryFluid[index].fluid);
   };
 
   return (
@@ -23,7 +26,7 @@ export default function ProductPageHeader({
       <Container className="section is-desktop is-centered my-4">
         <div className="columns">
           <figure className="image column is-half-desktop">
-            <img src={currDispImg} className="product-image-main" />
+            <Img fluid={currDispImg} className="product-image-main" />
           </figure>
           <div className="column py-0 is-half-desktop product-header-info">
             <p className="is-size-3 is-light is-centered product-header-title">
@@ -33,8 +36,8 @@ export default function ProductPageHeader({
               {description.description}
             </p>
             <div className="carousel-container">
-              {gallery !== null && gallery.length > 0 ? (
-                <ImageCarousel imgArr={gallery} setCurr={setCurrImg} />
+              {galleryThumbnail !== null && galleryThumbnail.length > 0 ? (
+                <ImageCarousel fluidArr={galleryFluid} thumbArr={galleryThumbnail} setCurr={setCurrImg} />
               ) : (
                 <div className="padding"></div>
               )}
@@ -46,7 +49,7 @@ export default function ProductPageHeader({
                   <AddToCartButton
                     id={id}
                     title={title}
-                    image={image}
+                    image={snipcartThumbnail}
                     price={price}
                     description={description.description}
                     slug={slug}
@@ -55,7 +58,7 @@ export default function ProductPageHeader({
                   <AddToCartButton
                     id={id}
                     title={title}
-                    image={image}
+                    image={snipcartThumbnail}
                     price={price}
                     description={description.description}
                     slug={slug}

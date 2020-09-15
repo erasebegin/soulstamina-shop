@@ -24,7 +24,6 @@ export function CartProvider(props) {
 
   useEffect(() => {
     getProducts();
-    console.log({ products });
   }, []);
 
   const getItem = (id) => {

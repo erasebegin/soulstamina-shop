@@ -16,10 +16,10 @@ const Button = styled.button`
   padding: .5em .75em;
   border: none;
   border-radius: ${({ size }) => (size === "small" ? "10px" : 0)};
-  border-bottom-left-radius: 10px;
   font-family: "Heebo", sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   letter-spacing: .08em;
+  cursor: pointer;
 `;
 CategoryButton.defaultProps = {
   category: "category",

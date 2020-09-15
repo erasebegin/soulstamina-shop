@@ -3,24 +3,27 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import { MDXProvider } from "@mdx-js/react";
+
 import ProductPageHeader from "../components/product-page/ProductPageHeader";
 import ProductList from "../components/products/ProductList";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
- 
+
 const ProductPage = ({ data }) => {
   const {
     id,
     title,
     description,
-    image,
+    fluid,
+    thumbnail,
     price,
-    gallery,
+    galleryThumbnail,
+    galleryFluid,
     body,
     slug,
     productCategory,
   } = data.singleProduct;
-    
+
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
@@ -54,10 +57,12 @@ const ProductPage = ({ data }) => {
           <div className="column">
             <ProductPageHeader
               title={title}
-              image={image}
+              image={fluid}
+              snipcartThumbnail={thumbnail}
+              galleryThumbnail={galleryThumbnail}
+              galleryFluid={galleryFluid}
               price={price}
               description={description}
-              gallery={gallery}
               id={id}
               slug={slug}
               isMobile={isMobile}
@@ -128,9 +133,14 @@ export const pageQuery = graphql`
       productCategory
       slug
       price
-      image {
-        file {
-          url
+      fluid: image {
+        fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      thumbnail: image {
+        fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
+          src
         }
       }
       description {
@@ -141,9 +151,14 @@ export const pageQuery = graphql`
           body
         }
       }
-      gallery {
-        file {
-          url
+      galleryThumbnail: gallery {
+        fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
+          ...GatsbyContentfulFixed_tracedSVG
+        }
+      }
+      galleryFluid: gallery {
+        fluid(resizingBehavior: FILL, cropFocus: CENTER) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }
@@ -155,9 +170,9 @@ export const pageQuery = graphql`
               content
             }
           }
-          image {
-            file {
-              url
+          fluid: image {
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           id

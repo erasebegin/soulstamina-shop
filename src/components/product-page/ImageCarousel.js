@@ -1,26 +1,27 @@
 import React, { useState } from "react";
+import Img from "gatsby-image";
 import styled from "styled-components";
 
-export default function Gallery({ imgArr, setCurr }) {
+export default function Gallery({ thumbArr, setCurr }) {
   //limit number of images to maximum of 4
-  const cutToFour = imgArr.slice(0, 3);
+  const cutToFour = thumbArr.slice(0, 3);
 
-  const setCurrImg = (img) => {
-    setCurr(img);
+  const setCurrImg = (index) => {
+    setCurr(index);
   };
 
   return (
     <GalleryContainer>
       <div className="subcontainer">
-        {cutToFour.map((image) => {
+        {cutToFour.map((image, index) => {
           return (
-            <img
-              className="gallery-image"
-              src={image.file.url}
-              onClick={() => setCurrImg(image.file.url)}
-              alt="soulstamina product"
-              key={image.file.url}
-            />
+            <div key={index} onClick={() => setCurrImg(index)}>
+              <Img
+                className="gallery-image"
+                fixed={image.fixed}
+                alt="soulstamina product"
+              />
+            </div>
           );
         })}
       </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
 
 export default function productCardFeatured({ data, isMobile }) {
-  const { title, description, image, slug } = data;
+  const { title, description, fluid, slug } = data;
   if (isMobile) {
     return (
       <div className="section">
@@ -13,7 +14,7 @@ export default function productCardFeatured({ data, isMobile }) {
           </div>
           <div className="product-image">
             <Link to={`/${slug}`}>
-              <img src={image.file.url} />
+              <Img fluid={fluid.fluid} className="main-image"/>
             </Link>
           </div>
           <div className="column product-info">
@@ -40,7 +41,7 @@ export default function productCardFeatured({ data, isMobile }) {
           <div className="columns wrapper">
             <div className="column is-one-third product-image">
               <Link to={`/${slug}`}>
-                <img src={image.file.url} />
+                <Img fluid={fluid.fluid} className="main-image" />
               </Link>
             </div>
             <div className="column product-info">
@@ -94,7 +95,7 @@ const CardSmall = styled.div`
   .product-image {
     padding: 0;
 
-    img {
+    .main-image {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 30px 0 rgba(0, 0, 0, 0.19);
       border-top-left-radius: 0;
@@ -156,7 +157,7 @@ max-width: 1100px;
 
   .product-image {
     padding: 0;
-    img {
+    .main-image {
       z-index: 100;
       -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
       -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
