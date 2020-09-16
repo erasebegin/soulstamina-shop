@@ -27,8 +27,8 @@ export default function ProductPageHeader({
       <Container className="section is-desktop is-centered my-4">
         <div className="columns">
           <figure className="image column is-half-desktop">
-          </figure>
             <Img fluid={currDispImg} className="product-image-main" />
+          </figure>
           <div className="column py-0 is-half-desktop product-header-info">
             <p className="is-size-3 is-light is-centered product-header-title">
               {title}
