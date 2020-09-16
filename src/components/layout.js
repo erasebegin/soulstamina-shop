@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 import "./style.scss";
 import Helmet from "./helmet";
@@ -12,9 +12,7 @@ const Layout = ({ children }) => (
       <Helmet />
       <Navbar />
       <div className="columns is-centered">
-        <div className="column main-body">
-          {children}
-        </div>
+        <div className="column main-body">{children}</div>
       </div>
       <Footer />
     </div>
@@ -25,6 +23,6 @@ const Container = styled.div`
   .main-body {
     min-height: 78vh;
   }
-`
+`;
 
 export default Layout;

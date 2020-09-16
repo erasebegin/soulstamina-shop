@@ -51,12 +51,11 @@ const Navbar = () => {
           <Link to="/postcards" className="navbar-item nn">
             Postcards
           </Link>
-            
         </div>
         <div className="navbar-end">
-        <button className="snipcart-checkout checkout-button">
-              <RiShoppingCart2Fill size="1.2em"/>
-            </button>
+          <button className="snipcart-checkout checkout-button">
+            <RiShoppingCart2Fill size="1.2em" />
+          </button>
         </div>
       </div>
     </Nav>
@@ -68,20 +67,20 @@ export default Navbar;
 const Nav = styled.nav`
   background: white;
   z-index: 0;
-  
+
   .navbar-item {
     font-weight: 600;
     color: #222;
 
     &:hover {
-      color: #BC9F75;
+      color: #bc9f75;
       background: none;
     }
   }
 
   .checkout-button {
     border: none;
-    color: #BC9F75;
+    color: #bc9f75;
     background: none;
     font-size: 1.4rem;
     cursor: pointer;
@@ -89,18 +88,16 @@ const Nav = styled.nav`
     height: 30px;
     margin: auto;
     margin-right: 2em;
-    padding-left: .6em;
-
-
+    padding-left: 0.6em;
 
     &:hover {
-      background: #BC9F75;
+      background: #bc9f75;
       color: white;
       transition: ease-in-out 200ms;
     }
 
-    @media(min-width: 600px) {
-      padding: .1em;
+    @media (min-width: 600px) {
+      padding: 0.1em;
     }
   }
 
@@ -109,8 +106,8 @@ const Nav = styled.nav`
     margin: 1em;
     margin-right: 2em;
 
-    @media(max-width: 600px) {
-    min-height: 30px;
-  }
+    @media (max-width: 600px) {
+      min-height: 30px;
+    }
   }
 `;

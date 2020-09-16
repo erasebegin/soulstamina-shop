@@ -1,20 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-export default function AddToCart({currentProduct}) {
-    const [cartData, setCartData] = useState([]);
+export default function AddToCart({ currentProduct }) {
+  const [cartData, setCartData] = useState([]);
 
-    useEffect(() => {
-        if (localStorage.getItem("cartData")) {
-          setCartData(JSON.parse(localStorage.getItem("cartData")));
-        }
-      }, []);
+  useEffect(() => {
+    if (localStorage.getItem("cartData")) {
+      setCartData(JSON.parse(localStorage.getItem("cartData")));
+    }
+  }, []);
 
-    const addItem = () => {
-        setCartData([...cartData, currentProduct]);
+  const addItem = () => {
+    setCartData([...cartData, currentProduct]);
+  };
 
-      };
-
-    
   let products;
   if (localStorage.getItem("cartItems")) {
     products = JSON.parse(localStorage.getItem("cartItems"));

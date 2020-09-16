@@ -15,7 +15,7 @@ const PrintPage = ({ data }) => {
     data.featured.edges[0].length > 0 ? data.featured.edges[0].node : null;
 
   const removeFeaturedItem = () => {
-    const newList = data.print.edges.filter((item) => {
+    const newList = data.print.edges.filter(item => {
       return item.node.id !== data.featured.edges[0].node.id;
     });
 
@@ -28,7 +28,7 @@ const PrintPage = ({ data }) => {
     if (featuredItem) {
       removeFeaturedItem();
     } else {
-      setList(data.print.edges)
+      setList(data.print.edges);
     }
   }, []);
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Img from "gatsby-image"
+import React, { useState } from "react";
+import Img from "gatsby-image";
 import styled from "styled-components";
 import ImageCarousel from "./ImageCarousel";
 import AddToCartButton from "../cart/AddToCartButton";
@@ -11,15 +11,14 @@ export default function ProductPageHeader({
   galleryFluid,
   galleryThumbnail,
   snipcartThumbnail,
+  image,
   id,
   slug,
-  isMobile,
+  isMobile
 }) {
-  const [currDispImg, setCurrDispImg] = useState(null);
+  const [currDispImg, setCurrDispImg] = useState(image.fluid);
 
-  useEffect(()=>{setCurrDispImg(galleryFluid[0].fluid)},[])
-
-  const setCurrImg = (index) => {
+  const setCurrImg = index => {
     setCurrDispImg(galleryFluid[index].fluid);
   };
 
@@ -28,8 +27,8 @@ export default function ProductPageHeader({
       <Container className="section is-desktop is-centered my-4">
         <div className="columns">
           <figure className="image column is-half-desktop">
-            <Img fluid={currDispImg} className="product-image-main" />
           </figure>
+            <Img fluid={currDispImg} className="product-image-main" />
           <div className="column py-0 is-half-desktop product-header-info">
             <p className="is-size-3 is-light is-centered product-header-title">
               {title}
@@ -39,7 +38,10 @@ export default function ProductPageHeader({
             </p>
             <div className="carousel-container">
               {galleryThumbnail !== null && galleryThumbnail.length > 0 ? (
-                <ImageCarousel fluidArr={galleryFluid} thumbArr={galleryThumbnail} setCurr={setCurrImg} />
+                <ImageCarousel
+                  thumbArr={galleryThumbnail}
+                  setCurr={setCurrImg}
+                />
               ) : (
                 <div className="padding"></div>
               )}

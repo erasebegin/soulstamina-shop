@@ -8,7 +8,7 @@ export default function ProductList({
   isMobile,
   limit,
   cardClass,
-  columnSize,
+  columnSize
 }) {
   if (items) {
     const products = items.slice(0, limit);
@@ -51,5 +51,5 @@ const Container = styled.section`
 ProductList.defaultProps = {
   limit: 5,
   cardClass: "columns is-desktop is-multiline",
-  columnSize: "is-half",
+  columnSize: "is-half"
 };

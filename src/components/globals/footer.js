@@ -17,7 +17,7 @@ const Footer = () => (
         }
       }
     `}
-    render={(data) => (
+    render={data => (
       <Container className="footer center has-background-light">
         <div className="has-text-centered">
           <article className="center">
@@ -52,7 +52,7 @@ export default Footer;
 
 const Container = styled.footer`
   a {
-    padding: .2em 0.4em 0 0.3em;
+    padding: 0.2em 0.4em 0 0.3em;
     border: none;
     color: #b18d17;
     background: #fff8ee;

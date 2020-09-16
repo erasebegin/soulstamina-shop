@@ -1,8 +1,8 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-const useProductData = (id) => {
+const useProductData = id => {
   const {
-    data: { products },
+    data: { products }
   } = useStaticQuery(graphql`
     {
       data: allContentfulProduct(sort: { fields: createdAt }) {
@@ -29,7 +29,7 @@ const useProductData = (id) => {
     }
   `);
 
-  return id ? products.find((product) => product.node.id === id) : products;
+  return id ? products.find(product => product.node.id === id) : products;
 };
 
 export default useProductData;

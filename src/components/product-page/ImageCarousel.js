@@ -6,7 +6,7 @@ export default function Gallery({ thumbArr, setCurr }) {
   //limit number of images to maximum of 4
   const cutToFour = thumbArr.slice(0, 3);
 
-  const setCurrImg = (index) => {
+  const setCurrImg = index => {
     setCurr(index);
   };
 

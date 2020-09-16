@@ -5,7 +5,11 @@ export default function Title({ title, styleClassH1, styleClassH2, subtitle }) {
   return (
     <TitleContainer>
       <h1 className={styleClassH1}>{title}</h1>
-      {subtitle==="subtitle" ? "" : <h2 className={styleClassH2}>{subtitle}</h2>}
+      {subtitle === "subtitle" ? (
+        ""
+      ) : (
+        <h2 className={styleClassH2}>{subtitle}</h2>
+      )}
     </TitleContainer>
   );
 }
@@ -24,6 +28,6 @@ const TitleContainer = styled.div`
   h2 {
     font-family: "Heebo", sans-serif;
     font-weight: 100;
-    line-height: .5em;
+    line-height: 0.5em;
   }
 `;

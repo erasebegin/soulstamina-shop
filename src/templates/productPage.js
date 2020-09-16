@@ -21,14 +21,14 @@ const ProductPage = ({ data }) => {
     galleryFluid,
     body,
     slug,
-    productCategory,
+    productCategory
   } = data.singleProduct;
 
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
   const getRelatedItems = () => {
-    const related = data.multipleProducts.edges.filter((item) => {
+    const related = data.multipleProducts.edges.filter(item => {
       return (
         item.node.productCategory === productCategory && item.node.id !== id
       );
@@ -139,7 +139,12 @@ export const pageQuery = graphql`
         }
       }
       thumbnail: image {
-        fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
+        fixed(
+          resizingBehavior: FILL
+          cropFocus: CENTER
+          width: 50
+          height: 50
+        ) {
           src
         }
       }
@@ -152,7 +157,12 @@ export const pageQuery = graphql`
         }
       }
       galleryThumbnail: gallery {
-        fixed(resizingBehavior: FILL, cropFocus: CENTER, width: 50, height: 50) {
+        fixed(
+          resizingBehavior: FILL
+          cropFocus: CENTER
+          width: 50
+          height: 50
+        ) {
           ...GatsbyContentfulFixed
         }
       }

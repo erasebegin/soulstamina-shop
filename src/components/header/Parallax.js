@@ -88,7 +88,6 @@ const Container = styled.div`
 `;
 
 const ContainerLarge = styled.div`
-
   z-index: 0;
   overflow: hidden;
   width: 100vw;
@@ -122,5 +121,5 @@ const ContainerLarge = styled.div`
 `;
 
 Parallax.defaultProps = {
-  type: "small",
+  type: "small"
 };

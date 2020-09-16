@@ -15,7 +15,7 @@ export function CartProvider(props) {
 
   const getProducts = () => {
     let tempProducts = [];
-    allProducts.forEach((item) => {
+    allProducts.forEach(item => {
       const singleItem = { ...item };
       tempProducts = [...tempProducts, singleItem];
     });
@@ -26,18 +26,18 @@ export function CartProvider(props) {
     getProducts();
   }, []);
 
-  const getItem = (id) => {
-    const product = products.find((item) => id === id);
+  const getItem = id => {
+    const product = products.find(item => id === id);
     return product;
   };
 
-  const handleDetail = (id) => {
+  const handleDetail = id => {
     const product = getItem(id);
     setDetail(product);
   };
 
-  const addToCart = (id) => {
-    const checkDuplicate = cart.find((item) => {
+  const addToCart = id => {
+    const checkDuplicate = cart.find(item => {
       return item.node.id === id;
     });
 
@@ -52,13 +52,13 @@ export function CartProvider(props) {
       product.node.total = price;
       product.node.count = 1;
       setProducts([...tempProducts]);
-      setCart((prevCart) => [...prevCart, product]);
+      setCart(prevCart => [...prevCart, product]);
     }
 
     console.log({ cart });
   };
 
-  const increment = (id) => {
+  const increment = id => {
     const tempCart = [...cart];
     const index = tempCart.indexOf(getItem(id));
     const product = tempCart[index];
@@ -68,7 +68,7 @@ export function CartProvider(props) {
     setCart([...tempCart]);
   };
 
-  const decrement = (id) => {
+  const decrement = id => {
     const tempCart = [...cart];
     const index = tempCart.indexOf(getItem(id));
     const product = tempCart[index];
@@ -82,10 +82,10 @@ export function CartProvider(props) {
     }
   };
 
-  const removeItem = (id) => {
+  const removeItem = id => {
     const tempProducts = [...products];
     let tempCart = [...cart];
-    tempCart = tempCart.filter((item) => item.id !== id);
+    tempCart = tempCart.filter(item => item.id !== id);
     const index = tempProducts.indexOf(getItem(id));
     const product = tempProducts[index];
     product.inCart = false;
@@ -114,7 +114,7 @@ export function CartProvider(props) {
         removeItem,
         clearCart,
         purchaseComplete,
-        setPurchaseComplete,
+        setPurchaseComplete
       }}
     >
       {props.children}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { ImArrowRight } from "react-icons/im"
+import { ImArrowRight } from "react-icons/im";
 
 import { Carousel } from "react-responsive-carousel";
 import { boolean, number } from "@storybook/addon-knobs";
@@ -26,7 +26,7 @@ export default function HeroCarousel({ data, isMobile }) {
     selectedItem: number("selectedItem", 0, {}, valuesGroupId),
     interval: number("interval", 5000, {}, valuesGroupId),
     transitionTime: number("transitionTime", 300, {}, valuesGroupId),
-    swipeScrollTolerance: number("swipeScrollTolerance", 10, {}, valuesGroupId),
+    swipeScrollTolerance: number("swipeScrollTolerance", 10, {}, valuesGroupId)
   });
 
   return (
@@ -58,7 +58,7 @@ export default function HeroCarousel({ data, isMobile }) {
               </Link>
               <Link to={`/${item.node.product.slug}`}>
                 <Button className="legend" color={item.node.textColor}>
-                  EXPLORE&nbsp; <ImArrowRight size=".8em"/>
+                  EXPLORE&nbsp; <ImArrowRight size=".8em" />
                 </Button>
               </Link>
             </div>
@@ -83,19 +83,19 @@ const Container = styled.section`
 const Button = styled.p`
   color: ${({ color }) => (color === "Dark" ? "white" : "black")} !important;
   background: ${({ color }) =>
-      color === "Dark" ? "black" : "white"} !important;
+    color === "Dark" ? "black" : "white"} !important;
   border: 3px solid ${({ color }) => (color === "Dark" ? "black" : "white")} !important;
   opacity: 100 !important;
   font-weight: 600 !important;
   font-size: 1.4rem !important;
   font-family: "Playfair Display", sans-serif;
-  letter-spacing: .07em;
+  letter-spacing: 0.07em;
   border-radius: 0 !important;
   width: 50% !important;
   margin-left: -25% !important;
   transition: ease-in-out 200ms !important;
 
-  @media(min-width: 700px){
+  @media (min-width: 700px) {
     margin-left: 15% !important;
     width: 25% !important;
     font-size: 1.7rem !important;
@@ -104,7 +104,7 @@ const Button = styled.p`
   &:hover {
     background: ${({ color }) =>
       color === "Dark" ? "white" : "black"} !important;
-      color: ${({ color }) => (color === "Dark" ? "black" : "white")} !important;
+    color: ${({ color }) => (color === "Dark" ? "black" : "white")} !important;
     transition: ease-in-out 200ms !important;
   }
 `;

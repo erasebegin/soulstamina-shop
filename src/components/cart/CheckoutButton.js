@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function CheckoutButton() {
-    return (
-        <button>
-            Checkout &gt;&gt;
-        </button>
-    )
+  return <button>Checkout &gt;&gt;</button>;
 }

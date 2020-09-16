@@ -12,7 +12,7 @@ const PostcardsPage = ({ data }) => {
   const [list, setList] = useState(null);
 
   const removeFeaturedItem = () => {
-    const newList = data.postcards.edges.filter((item) => {
+    const newList = data.postcards.edges.filter(item => {
       return item.node.id !== data.featured.edges[0].node.id;
     });
 
@@ -22,11 +22,11 @@ const PostcardsPage = ({ data }) => {
   useEffect(() => {
     window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
 
-    removeFeaturedItem()
+    removeFeaturedItem();
   }, []);
 
-  if (typeof window === 'undefined') {
-    global.window = {}
+  if (typeof window === "undefined") {
+    global.window = {};
   }
 
   window.onresize = function() {

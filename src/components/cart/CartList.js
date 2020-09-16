@@ -8,7 +8,7 @@ export default function CartList() {
   console.log({ cart });
   return (
     <Container className="container">
-      {cart.map((item) => {
+      {cart.map(item => {
         return <CartItem data={item} />;
       })}
     </Container>

@@ -23,7 +23,11 @@ export default function productCard({ data }) {
         <div className="card-image">
           <figure className="image">
             <Link to={`/${slug}`}>
-              <Img fluid={fluid.fluid} className="product-image" alt="a random image" />
+              <Img
+                fluid={fluid.fluid}
+                className="product-image"
+                alt="a random image"
+              />
             </Link>
           </figure>
         </div>
@@ -102,7 +106,7 @@ const Card = styled.div`
     height: 300px;
     margin: 0 auto;
     margin-top: -3.5%;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     object-fit: cover;
   }
 `;

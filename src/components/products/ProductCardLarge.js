@@ -19,7 +19,7 @@ export default function productCardLarge({ data }) {
   return (
     <Card>
       <div className="product-image-container">
-      <CategoryButton category={category} title={category} size="large" />
+        <CategoryButton category={category} title={category} size="large" />
         <Link to={`/${slug}`}>
           <Img fluid={fluid.fluid} className="product-image" />
         </Link>

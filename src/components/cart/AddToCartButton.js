@@ -9,7 +9,7 @@ export default function AddToCartButton({
   price,
   description,
   slug,
-  alt,
+  alt
 }) {
   if (alt) {
     return (
