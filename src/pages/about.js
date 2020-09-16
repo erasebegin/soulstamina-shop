@@ -66,14 +66,14 @@ const Container = styled.div`
     position: absolute;
     font-family: "Playfair Display", serif;
     text-transform: lowercase;
-    margin-left: 25%;
+    margin-left: 50%;
     margin-top: 4em;
-    background: url(https://i.ibb.co/z2252ts/Watercolor-Paper-Texture-Vector-illustration.jpg);
-    background-size: 10%;
+    background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 25;
     padding: 1em;
     padding-top: 0;
+    backdrop-filter: blur(5px);
 
     @media (min-width: 900px) {
       position: initial;
@@ -104,13 +104,14 @@ const Container = styled.div`
 
         @media (min-width: 900px) {
           padding: 1em;
+          margin-top: 200px;
         }
       }
 
       .image1 {
         order: 2;
         max-width: 350px;
-        position: absolute;
+        position: relative;
         z-index: 20;
 
         @media (min-width: 900px) {
@@ -121,23 +122,6 @@ const Container = styled.div`
         }
       }
 
-      .image2 {
-        transform: rotate(1deg);
-        margin-left: 3em;
-        order: 1;
-
-        @media (min-width: 900px) {
-          order: 2;
-        }
-      }
-
-      .image3 {
-        margin-left: -2em;
-        margin-bottom: -8em;
-        transform: rotate(5deg);
-        order: 3;
-      }
-
       .image2,
       .image3 {
         margin: 0;
@@ -145,6 +129,34 @@ const Container = styled.div`
 
         @media (min-width: 900px) {
           max-width: 200px;
+        }
+      }
+
+      .image2 {
+        transform: rotate(1deg);
+        order: 1;
+        display: none;
+
+        @media (min-width: 900px) {
+          order: 2;
+          display: initial;
+          margin-bottom: -30px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+      }
+
+      .image3 {
+        margin-left: -2em;
+        transform: rotate(5deg);
+        order: 3;
+        display: none;
+
+        @media (min-width: 900px) {
+          display: initial;
+          margin-bottom: -40px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
       }
     }
@@ -162,7 +174,7 @@ const Container = styled.div`
       z-index: 30;
 
       @media (min-width: 900px) {
-        margin-top: -5em;
+        margin-top: -4em;
         margin-left: 20%;
       }
     }
