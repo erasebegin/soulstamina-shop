@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import ProductList from "../components/products/ProductList";
-import FeaturedProduct from "../components/products/productCardFeatured";
+import FeaturedProduct from "../components/products/ProductCardFeatured";
 import Title from "../components/globals/Title";
 import Carousel from "../components/carousel";
 import SEO from "../components/seo";

@@ -15,13 +15,13 @@ export default function ProductList({
     return (
       <Container className="is-paddingless">
         <div className="card-container">
-          {products.map((product) => {
+          {products.map((product, index) => {
             if (isMobile === true) {
-              return <ProductCard data={product} key={product.node.id} />;
+              return <ProductCard data={product} key={index} />;
             } else {
               return (
                 <div className={`column ${columnSize}`}>
-                  <ProductCardLarge data={product} key={product.node.id} />
+                  <ProductCardLarge data={product} key={index} />
                 </div>
               );
             }

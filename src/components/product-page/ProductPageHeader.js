@@ -17,7 +17,7 @@ export default function ProductPageHeader({
 }) {
   const [currDispImg, setCurrDispImg] = useState(null);
 
-  useEffect(()=>{setCurrDispImg(galleryFLuid[0].fluid)},[])
+  useEffect(()=>{setCurrDispImg(galleryFluid[0].fluid)},[])
 
   const setCurrImg = (index) => {
     setCurrDispImg(galleryFluid[index].fluid);
