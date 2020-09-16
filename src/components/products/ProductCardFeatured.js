@@ -6,18 +6,6 @@ import styled from "styled-components";
 export default function ProductCardFeatured({ data, isMobile }) {
   const { title, description, fluid, slug } = data;
 
-  // A hack to fix build bug where fluid image is not available at the time it is called
-
-  // const [image, setImage] = useState(null)
-
-  // useEffect(
-  //   ()=>{
-  //     setImage(fluid.fluid)
-  //   }, []
-  // )
-
-  // This hack broke everything. I mean EVERYTHING.
-
   if (isMobile) {
     return (
       <div className="section">

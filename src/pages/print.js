@@ -74,9 +74,9 @@ export const query = graphql`
           slug
           productCategory
           title
-          image {
-            file {
-              url
+          fluid: image {
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid
             }
           }
           description {
@@ -98,9 +98,9 @@ export const query = graphql`
           slug
           productCategory
           title
-          image {
-            file {
-              url
+          fluid: image {
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid
             }
           }
           description {
