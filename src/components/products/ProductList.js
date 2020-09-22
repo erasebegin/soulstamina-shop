@@ -7,7 +7,6 @@ export default function ProductList({
   items,
   isMobile,
   limit,
-  cardClass,
   columnSize
 }) {
   if (items) {
