@@ -25,7 +25,7 @@ const Navbar = () => {
           className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasicExample"
+          data-target="nav-menu"
           onClick={setNav}
         >
           <span aria-hidden="true"></span>
@@ -77,7 +77,7 @@ const Nav = styled.nav`
   z-index: 0;
 
   .navbar-item {
-    font-weight: 600;
+    font-weight: 400;
     color: #222;
     font-size: 1.3rem !important;
 
@@ -120,7 +120,6 @@ const Nav = styled.nav`
 
   .navbar-burger {
     height: 5rem;
-    height: 30px;
   }
 
   .checkout-button {
