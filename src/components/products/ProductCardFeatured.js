@@ -168,6 +168,7 @@ const CardLarge = styled.div`
       max-height: 96.5%;
       margin: 0 auto;
       margin-top: -3.5%;
+      margin-left: 4%;
       object-fit: cover;
     }
   }
@@ -193,7 +194,7 @@ const CardLarge = styled.div`
 
     .product-text {
       padding: 1em 2em;
-      width: 80%;
+      width: 90%;
       background: #fff8ee;
       border: 1px solid #8f795a;
       border-left: 0;

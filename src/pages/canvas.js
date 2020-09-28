@@ -37,7 +37,7 @@ const CanvasPage = ({ data }) => {
     <>
       <SEO title="Canvases" />
       <Layout>
-        <Title title="canvases." subtitle="by soulstamina" />
+        <Title title="canvases" subtitle="by soulstamina" />
         <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}

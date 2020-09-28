@@ -37,7 +37,7 @@ const PostcardsPage = ({ data }) => {
     <>
       <SEO title="Postcards" />
       <Layout>
-        <Title title="postcards." subtitle="by soulstamina" />
+        <Title title="postcards" subtitle="by soulstamina" />
         <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}

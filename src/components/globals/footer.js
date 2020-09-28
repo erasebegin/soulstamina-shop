@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "gatsby";
 import { SiEtsy } from "react-icons/si";
 import { AiFillMail, AiFillInstagram } from "react-icons/ai";
 import { StaticQuery, graphql } from "gatsby";
@@ -18,23 +19,23 @@ const Footer = () => (
       }
     `}
     render={data => (
-      <Container className="footer center has-background-light">
+      <Container className="footer center has-background-light is-paddingless">
         <div className="has-text-centered">
           <article className="center">
             <span>
-              <a className="first" href={data.site.siteMetadata.email}>
+              <Link className="first" to="/contact">
                 <AiFillMail />
-              </a>
+              </Link>
             </span>
             &nbsp;
             <span>
-              <a href={data.site.siteMetadata.etsy}>
+              <a href={data.site.siteMetadata.etsy} target="_blank" rel="noopener noreferrer">
                 <SiEtsy />
               </a>
             </span>
             &nbsp;
             <span>
-              <a href={data.site.siteMetadata.instagram}>
+              <a href={data.site.siteMetadata.instagram} target="_blank" rel="noopener noreferrer">
                 <AiFillInstagram />
               </a>
             </span>
@@ -51,6 +52,7 @@ const Footer = () => (
 export default Footer;
 
 const Container = styled.footer`
+  height: 150px;
   a {
     padding: 0.2em 0.4em 0 0.3em;
     border: none;

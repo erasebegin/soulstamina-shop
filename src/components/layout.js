@@ -21,7 +21,7 @@ const Layout = ({ children }) => (
 
 const Container = styled.div`
   .main-body {
-    min-height: 78vh;
+    min-height: 85vh;
   }
 `;
 

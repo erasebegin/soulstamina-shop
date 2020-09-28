@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 
 import "./style.scss";
-import soulstaminaLogo from "../images/logo_feb.png";
+import soulstaminaLogo from "../images/soulstamina_logo_2020.png";
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState("");
@@ -36,21 +36,29 @@ const Navbar = () => {
 
       <div className={`navbar-menu ${navActive}`}>
         <div className="navbar-start">
-          <Link to="/" className="navbar-item">
-            Home
-          </Link>
           <Link to="/about" className="navbar-item">
-            About
+            about
           </Link>
-          <Link to="/print" className="navbar-item nn">
-            Print
+          <Link to="/print" className="navbar-item">
+            print
           </Link>
-          <Link to="/canvas" className="navbar-item nn">
-            Canvas
+          <Link to="/canvas" className="navbar-item">
+            canvas
           </Link>
-          <Link to="/postcards" className="navbar-item nn">
-            Postcards
+          <Link to="/postcards" className="navbar-item">
+            postcards
           </Link>
+          <Link to="/contact" className="navbar-item">
+            contact
+          </Link>
+          <a
+            href="https://www.soulstamina.art"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar-item nav-special"
+          >
+            blog
+          </a>
         </div>
         <div className="navbar-end">
           <button className="snipcart-checkout checkout-button">
@@ -71,23 +79,60 @@ const Nav = styled.nav`
   .navbar-item {
     font-weight: 600;
     color: #222;
+    font-size: 1.3rem !important;
 
     &:hover {
       color: #bc9f75;
       background: none;
     }
+
+    @media (min-width: 1125px) {
+      font-size: initial !important;
+    }
+  }
+
+  .nav-special {
+    background: #f1de9e;
+    box-shadow: 1px 1px 0 #6e6546, 2px 2px 0 #c9a26c;
+    transition: ease-in-out 200ms;
+    width: 70px;
+    margin: auto;
+    margin-left: 0.5em;
+    /* padding-bottom: 0.5em; */
+
+    &:hover {
+      color: #f1de9e;
+      background: #6e6546;
+      box-shadow: 3px 3px 0 #c9a26c, 6px 6px 0 #6e6546;
+      transition: ease-in-out 200ms;
+    }
+
+    &:visited {
+      color: black;
+      background: #f1de9e;
+    }
+
+    @media (min-width: 1125px) {
+      padding-bottom: 0.5em;
+      width: auto;
+    }
+  }
+
+  .navbar-burger {
+    height: 5rem;
+    height: 30px;
   }
 
   .checkout-button {
     border: none;
     color: #bc9f75;
     background: none;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     cursor: pointer;
     transition: ease-in-out 200ms;
-    height: 30px;
     margin: auto;
     margin-right: 2em;
+    margin-top: .5em;
     padding-left: 0.6em;
 
     &:hover {
@@ -96,8 +141,10 @@ const Nav = styled.nav`
       transition: ease-in-out 200ms;
     }
 
-    @media (min-width: 600px) {
-      padding: 0.1em;
+    @media (min-width: 1125px) {
+      padding: 0.1em 0.1em 0 0.2em !important;
+      margin-top: auto;
+      font-size: 1.4rem;
     }
   }
 
@@ -106,7 +153,7 @@ const Nav = styled.nav`
     margin: 1em;
     margin-right: 2em;
 
-    @media (max-width: 600px) {
+    @media (max-width: 1125px) {
       min-height: 30px;
     }
   }

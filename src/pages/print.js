@@ -44,7 +44,7 @@ const PrintPage = ({ data }) => {
     <>
       <SEO title="prints" />
       <Layout>
-        <Title title="prints." subtitle="by soulstamina" />
+        <Title title="prints" subtitle="by soulstamina" />
         {featuredItem ? (
           <FeaturedProduct
             data={data.featured.edges[0].node}
