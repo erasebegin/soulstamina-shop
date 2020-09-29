@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { ImArrowRight } from "react-icons/im";
+import { FaShoppingBag } from "react-icons/fa";
 
 import { Carousel } from "react-responsive-carousel";
 import { boolean, number } from "@storybook/addon-knobs";
@@ -58,7 +58,7 @@ export default function HeroCarousel({ data, isMobile }) {
               </Link>
               <Link to={`/${item.node.product.slug}`}>
                 <Button className="legend" color={item.node.textColor}>
-                  EXPLORE&nbsp; <ImArrowRight size=".8em" />
+                  explore&nbsp; <FaShoppingBag size="1em" />
                 </Button>
               </Link>
             </div>

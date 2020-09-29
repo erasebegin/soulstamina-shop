@@ -106,7 +106,7 @@ const Card = styled.div`
     height: 300px;
     margin: 0 auto;
     margin-top: -3.5%;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     object-fit: cover;
   }
 `;

@@ -22,7 +22,7 @@ export default function AddToCartButton({
         data-item-image={image ? image.fixed.src : null}
         data-item-name={title}
       >
-        ADD TO CART <FaCartPlus />
+        add to cart <FaCartPlus />
       </Button>
     );
   } else {
@@ -36,7 +36,7 @@ export default function AddToCartButton({
         data-item-image={image ? image.fixed.src : null}
         data-item-name={title}
       >
-        <FaCartPlus size=".75em" />
+        <FaCartPlus size="1.8rem" />
       </Button>
     );
   }

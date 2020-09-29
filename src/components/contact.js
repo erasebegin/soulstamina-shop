@@ -9,7 +9,7 @@ export default function Contact() {
         <Title title="contact" subtitle="soulstamina" />
         <div className="columns is-centered">
           <form
-            action="https://formspree.io/mknrpjpl"
+            action="https://formspree.io/mgenkpzr"
             method="POST"
             className="column is-two-thirds-tablet is-half-desktop"
           >

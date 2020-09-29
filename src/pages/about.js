@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import { MDXProvider } from "@mdx-js/react";
+import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -26,15 +27,15 @@ export default function about({ data }) {
           </div>
           <div className="header-container">
             <div className="title-image-container">
-              <div className="image-container image1">
-                <img src={aboutData.image.file.url} />
+              <div className="image-container">
+                <Img fluid={aboutData.image.fluid} className="image image1" />
               </div>
 
-              <div className="image-container image2">
-                <img src={aboutData.image2.file.url} />
+              <div className="image-container">
+                <Img fluid={aboutData.image2.fluid} className="image image2" />
               </div>
-              <div className="image-container image3">
-                <img src={aboutData.image3.file.url} />
+              <div className="image-container">
+                <Img fluid={aboutData.image3.fluid} className="image image3" />
               </div>
             </div>
             <div className="header-text-container">
@@ -63,17 +64,17 @@ const Container = styled.div`
   padding-top: 1em;
 
   .title-container {
-    position: absolute;
+    /* position: absolute; */
     font-family: "Playfair Display", serif;
     text-transform: lowercase;
-    margin-left: 50%;
-    margin-top: 4em;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* margin: 4em auto 4em 50%; */
+    /* background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     z-index: 25;
     padding: 1em;
     padding-top: 0;
     backdrop-filter: blur(5px);
+      margin-bottom: 1em;
 
     @media (min-width: 900px) {
       position: initial;
@@ -81,8 +82,7 @@ const Container = styled.div`
       box-shadow: none;
       padding: 0;
       margin-left: 10px;
-      margin-bottom: -4em;
-      margin-top: 0;
+      margin-bottom: 3em;
     }
   }
 
@@ -93,76 +93,34 @@ const Container = styled.div`
     .title-image-container {
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: center;
       .image-container {
-        padding: 0.5em;
-        margin-left: 10%;
-        object-fit: cover;
         transform: rotate(-5deg);
-        z-index: 1;
-        background: url(https://i.ibb.co/6bNQ0t0/29-05-13-paper07.jpg);
+        background: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 1em;
+        margin-bottom: 3em;
 
-        @media (min-width: 900px) {
-          padding: 1em;
-          margin-top: 200px;
+        .image {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 20px;
         }
-      }
 
-      .image1 {
-        order: 2;
-        max-width: 350px;
-        position: relative;
-        z-index: 20;
+        &:nth-child(2) {
+          transform: rotate(20deg);
+          margin: 0 -1em 0 -2em;
 
-        @media (min-width: 900px) {
-          position: initial;
-          order: 1;
-          max-width: 300px;
-          z-index: 1;
-        }
-      }
-
-      .image2,
-      .image3 {
-        margin: 0;
-        max-width: 300px;
-
-        @media (min-width: 900px) {
-          max-width: 200px;
-        }
-      }
-
-      .image2 {
-        transform: rotate(1deg);
-        order: 1;
-        display: none;
-
-        @media (min-width: 900px) {
-          order: 2;
-          display: initial;
-          margin-bottom: -30px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-      }
-
-      .image3 {
-        margin-left: -2em;
-        transform: rotate(5deg);
-        order: 3;
-        display: none;
-
-        @media (min-width: 900px) {
-          display: initial;
-          margin-bottom: -40px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          @media (min-width: 900px) {
+            margin: 0 2em 0 1em;
+          }
         }
       }
     }
 
     .header-text-container {
-      margin: 0 0.5em;
+      margin: auto;
       padding: 1em;
       padding-left: 2em;
       max-width: 800px;
@@ -174,8 +132,7 @@ const Container = styled.div`
       z-index: 30;
 
       @media (min-width: 900px) {
-        margin-top: -4em;
-        margin-left: 20%;
+        /* margin-left: 20%; */
       }
     }
   }
@@ -204,18 +161,18 @@ export const query = graphql`
             }
           }
           image {
-            file {
-              url
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid
             }
           }
           image2 {
-            file {
-              url
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid
             }
           }
           image3 {
-            file {
-              url
+            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+              ...GatsbyContentfulFluid
             }
           }
           title
