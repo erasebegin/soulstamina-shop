@@ -42,7 +42,7 @@ const Footer = () => (
             &nbsp;
           </article>
           &nbsp;
-          <p className="is-size-5">Soulstamina &copy;</p>
+          <p className="is-size-5">soulstamina &copy;</p>
         </div>
       </Container>
     )}
