@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { FaShoppingBag } from "react-icons/fa";
+import { FiChevronsRight } from "react-icons/fi";
 
 import { Carousel } from "react-responsive-carousel";
 import { boolean, number } from "@storybook/addon-knobs";
@@ -26,7 +26,7 @@ export default function HeroCarousel({ data, isMobile }) {
     selectedItem: number("selectedItem", 0, {}, valuesGroupId),
     interval: number("interval", 5000, {}, valuesGroupId),
     transitionTime: number("transitionTime", 300, {}, valuesGroupId),
-    swipeScrollTolerance: number("swipeScrollTolerance", 10, {}, valuesGroupId)
+    swipeScrollTolerance: number("swipeScrollTolerance", 10, {}, valuesGroupId),
   });
 
   return (
@@ -58,7 +58,7 @@ export default function HeroCarousel({ data, isMobile }) {
               </Link>
               <Link to={`/${item.node.product.slug}`}>
                 <Button className="legend" color={item.node.textColor}>
-                  explore&nbsp; <FaShoppingBag size="1em" />
+                  EXPLORE <FiChevronsRight size="1.3em" className="chevrons"/>
                 </Button>
               </Link>
             </div>
@@ -81,30 +81,39 @@ const Container = styled.section`
 `;
 
 const Button = styled.p`
-  color: ${({ color }) => (color === "Dark" ? "white" : "black")} !important;
+  color: ${({ color }) => (color === "Dark" ? "white" : "#BC9F75")} !important;
   background: ${({ color }) =>
-    color === "Dark" ? "black" : "white"} !important;
-  border: 3px solid ${({ color }) => (color === "Dark" ? "black" : "white")} !important;
+    color === "Dark" ? "#BC9F75" : "white"} !important;
+  /* border: 3px solid ${({ color }) => (color === "Dark" ? "#6e6546" : "white")} !important; */
   opacity: 100 !important;
   font-weight: 600 !important;
   font-size: 1.4rem !important;
   font-family: "Playfair Display", sans-serif;
   letter-spacing: 0.07em;
   border-radius: 0 !important;
-  width: 50% !important;
-  margin-left: -25% !important;
+  width: auto !important;
+  margin-left: -20% !important;
   transition: ease-in-out 200ms !important;
+  padding: 0.5em 0.75em !important;
+  padding-top: 0.25em !important;
+  padding-right: 0.5em !important;
+  line-height: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
 
   @media (min-width: 700px) {
-    margin-left: 15% !important;
-    width: 25% !important;
+    margin-left: 28% !important;
+    width: auto !important;
     font-size: 1.7rem !important;
   }
 
   &:hover {
     background: ${({ color }) =>
-      color === "Dark" ? "white" : "black"} !important;
-    color: ${({ color }) => (color === "Dark" ? "black" : "white")} !important;
+      color === "Dark" ? "white" : "#BC9F75"} !important;
+    color: ${({ color }) => (color === "Dark" ? "#BC9F75" : "white")} !important;
     transition: ease-in-out 200ms !important;
+  }
+
+  .chevrons {
+    margin-bottom: -.25em;
   }
 `;

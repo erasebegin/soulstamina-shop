@@ -8,7 +8,7 @@ import Footer from "./globals/footer";
 
 const Layout = ({ children }) => (
   <Container className="columns">
-    <div className="column">
+    <div className="column main">
       <Helmet />
       <Navbar />
       <div className="columns is-centered">
@@ -22,6 +22,10 @@ const Layout = ({ children }) => (
 const Container = styled.div`
   .main-body {
     min-height: 85vh;
+  }
+
+  .main {
+    padding-bottom: 0;
   }
 `;
 

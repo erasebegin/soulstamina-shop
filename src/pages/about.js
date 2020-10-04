@@ -64,17 +64,13 @@ const Container = styled.div`
   padding-top: 1em;
 
   .title-container {
-    /* position: absolute; */
     font-family: "Playfair Display", serif;
     text-transform: lowercase;
-    /* margin: 4em auto 4em 50%; */
-    /* background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     z-index: 25;
     padding: 1em;
     padding-top: 0;
     backdrop-filter: blur(5px);
-      margin-bottom: 1em;
+    margin-bottom: 1em;
 
     @media (min-width: 900px) {
       position: initial;
@@ -109,11 +105,29 @@ const Container = styled.div`
         }
 
         &:nth-child(2) {
-          transform: rotate(20deg);
+          transform: rotate(5deg);
           margin: 0 -1em 0 -2em;
+
+          .image {
+            width: 300px;
+            height: 300px;
+          }
 
           @media (min-width: 900px) {
             margin: 0 2em 0 1em;
+            transform: rotate(20deg);
+
+            .image {
+              width: 200px;
+              height: 200px;
+            }
+          }
+        }
+
+        &:nth-child(odd) {
+          display: none;
+          @media (min-width: 900px) {
+            display: initial;
           }
         }
       }
@@ -125,14 +139,15 @@ const Container = styled.div`
       padding-left: 2em;
       max-width: 800px;
       font-size: 1.3rem;
-      background: url(https://i.ibb.co/swKgdJh/61e4f93baa251a8d8c5475e81e1cd394-resize.jpg);
-      transform: rotate(1deg);
+      background: url(https://i.ibb.co/v1x9Tkz/White-Empty-Canvas-Texture.jpg);
+      background-size: 25%;
+      transform: rotate(0deg);
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
       z-index: 30;
 
       @media (min-width: 900px) {
-        /* margin-left: 20%; */
+        transform: rotate(1deg);
       }
     }
   }
