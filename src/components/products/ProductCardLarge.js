@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
-import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
+
+import CategoryButton from "../globals/CategoryButton";
 import CartButton from "../cart/AddToCartButton";
 
 export default function productCardLarge({ data }) {
@@ -10,19 +11,18 @@ export default function productCardLarge({ data }) {
     title,
     description,
     price,
-    image,
+    gallery,
     slug,
     id,
     productCategory: category,
-    fluid
   } = data.node;
   return (
     <Card>
       <div className="product-image-container">
-        <CategoryButton category={category} title={category} size="large" />
         <Link to={`/${slug}`}>
-          <Img fluid={fluid.fluid} className="product-image" />
+          <Img fluid={gallery[0].fluid} className="product-image" />
         </Link>
+        <CategoryButton category={category} title={category} size="large" />
       </div>
       <div className="column product-info">
         <div className="top-wrapper">
@@ -37,7 +37,7 @@ export default function productCardLarge({ data }) {
             id={id}
             title={title}
             description={description.internal.content}
-            image={image}
+            image={gallery[0].fluid.src}
             slug={slug}
             price={price}
           />
@@ -60,13 +60,13 @@ const Card = styled.div`
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 
   .product-image-container {
+    position: relative;
     padding: 0;
     max-width: 50%;
     button {
       position: absolute;
-      /* border-top-right-radius: 0;
-      border-bottom-right-radius: 0; */
-      z-index: 100;
+      top: 0;
+      right: 0;
     }
     .product-image {
       width: 250px;

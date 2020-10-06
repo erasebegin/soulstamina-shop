@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 export default function Gallery({ thumbArr, setCurr }) {
   //limit number of images to maximum of 4
-  const cutToFour = thumbArr.slice(0, 3);
+  const cutToFour = thumbArr.slice(0, 4);
 
-  const setCurrImg = index => {
+  const setCurrImg = (index) => {
     setCurr(index);
   };
 
@@ -39,23 +39,6 @@ const GalleryContainer = styled.div`
     justify-content: flex-start;
     margin-left: -10%;
   }
-  .gallery-image {
-    max-width: 50px;
-    object-fit: cover;
-    transition: 200ms;
-    margin: 0 0.5em;
-
-    @media (min-width: 600px) {
-      max-width: 100px;
-    }
-
-    &:hover {
-      transform: translate(-2px, -1px);
-      transition: 200ms;
-      cursor: pointer;
-      filter: contrast(1.5);
-    }
-  }
 
   .subcontainer {
     display: flex;
@@ -70,6 +53,26 @@ const GalleryContainer = styled.div`
 
     @media (min-width: 780px) {
       padding-left: 2em;
+    }
+
+    .gallery-image {
+      width: 75px !important;
+      height: 75px !important;
+      object-fit: cover;
+      transition: 200ms;
+      margin: 0 0.5em;
+
+      @media (min-width: 760px) {
+        width: 100px !important;
+        height: 100px !important;
+      }
+
+      &:hover {
+        transform: translate(-2px, -1px);
+        transition: 200ms;
+        cursor: pointer;
+        filter: contrast(1.5);
+      }
     }
   }
 `;

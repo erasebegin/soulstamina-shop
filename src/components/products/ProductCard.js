@@ -11,10 +11,9 @@ export default function productCard({ data }) {
     title,
     description,
     price,
-    image,
     slug,
     productCategory: category,
-    fluid
+    gallery
   } = data.node;
 
   return (
@@ -24,7 +23,7 @@ export default function productCard({ data }) {
           <figure className="image">
             <Link to={`/${slug}`}>
               <Img
-                fluid={fluid.fluid}
+                fluid={gallery[0].fluid}
                 className="product-image"
                 alt="a random image"
               />
@@ -48,7 +47,7 @@ export default function productCard({ data }) {
             id={id}
             title={title}
             description={description.internal.content}
-            image={image}
+            image={gallery[0].fluid.src}
             slug={slug}
             price={price}
           />
@@ -61,10 +60,10 @@ export default function productCard({ data }) {
 const Card = styled.div`
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    min-width: 80vw;
+    max-width: 500px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
     margin-bottom: 2em;
   }
 
@@ -72,7 +71,7 @@ const Card = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
+    margin-top: 1em;
     width: 100%;
     padding: 1em 2em;
     border-top: 2px solid #f1de9e;
@@ -106,7 +105,7 @@ const Card = styled.div`
     height: 300px;
     margin: 0 auto;
     margin-top: -3.5%;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     object-fit: cover;
   }
 `;

@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
-import { SiEtsy } from "react-icons/si";
-import { AiFillMail, AiFillInstagram } from "react-icons/ai";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import logo from "../../images/soulstamina_logo_2020.png";
+import etsyicon from "../../images/icons_Etsy-02.svg";
+import instaicon from "../../images/icon_IG-01.svg";
+import mailicon from "../../images/icons_mail-01-01.svg";
 
 const Footer = () => (
   <StaticQuery
@@ -27,7 +28,7 @@ const Footer = () => (
           <article className="icon-container">
             <span>
               <Link className="first" to="/contact">
-                <AiFillMail />
+                <img src={mailicon} className="icon" />
               </Link>
             </span>
             <span>
@@ -36,7 +37,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <SiEtsy />
+                <img src={etsyicon} className="icon" />
               </a>
             </span>
             <span>
@@ -45,11 +46,11 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AiFillInstagram />
+                <img src={instaicon} className="icon" />
               </a>
             </span>
           </article>
-          <p className="is-size-5 copyright">&copy; yana soulstamina</p>
+          <p className="copyright">&copy; yana soulstamina</p>
         </div>
       </Container>
     )}
@@ -77,19 +78,24 @@ const Container = styled.footer`
     padding-right: 1em;
 
     a {
-      padding: 0.2em 0.4em 0 0.3em;
       border: none;
-      color: #b18d17;
-      background: #fff8ee;
       cursor: pointer;
       transition: ease-out 200ms;
       margin-left: 1em;
-      font-size: 1.5rem;
 
       &:hover {
-        background: #b18d17;
-        color: #fff8ee;
         transition: ease-in-out 200ms;
+      }
+
+      .icon {
+        transition: 200ms ease-in-out;
+        border-radius: 100%;
+
+        &:hover {
+          transform: scale(1.1);
+          box-shadow: 0px 0px 3px #b18d17;
+          transition: 200ms ease-in-out;
+        }
       }
     }
 
@@ -97,6 +103,9 @@ const Container = styled.footer`
       display: none;
       @media (min-width: 700px) {
         display: initial;
+        font-size: 1rem;
+        font-weight: lighter;
+        margin-bottom: .5em;
       }
     }
 

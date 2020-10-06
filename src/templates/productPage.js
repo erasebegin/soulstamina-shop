@@ -14,11 +14,9 @@ const ProductPage = ({ data }) => {
     id,
     title,
     description,
-    fluid,
-    thumbnail,
     price,
     galleryThumbnail,
-    galleryFluid,
+    gallery,
     body,
     slug,
     productCategory
@@ -41,11 +39,11 @@ const ProductPage = ({ data }) => {
   }
 
   window.onresize = function() {
-    window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
   };
 
   useEffect(() => {
-    window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
     getRelatedItems();
   }, []);
 
@@ -57,10 +55,8 @@ const ProductPage = ({ data }) => {
           <div className="column">
             <ProductPageHeader
               title={title}
-              image={fluid}
-              snipcartThumbnail={thumbnail}
               galleryThumbnail={galleryThumbnail}
-              galleryFluid={galleryFluid}
+              gallery={gallery}
               price={price}
               description={description}
               id={id}
@@ -133,21 +129,6 @@ export const pageQuery = graphql`
       productCategory
       slug
       price
-      fluid: image {
-        fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-          ...GatsbyContentfulFluid
-        }
-      }
-      thumbnail: image {
-        fixed(
-          resizingBehavior: FILL
-          cropFocus: CENTER
-          width: 50
-          height: 50
-        ) {
-          src
-        }
-      }
       description {
         description
       }
@@ -160,13 +141,13 @@ export const pageQuery = graphql`
         fixed(
           resizingBehavior: FILL
           cropFocus: CENTER
-          width: 50
-          height: 50
+          width: 150
+          height: 150
         ) {
           ...GatsbyContentfulFixed
         }
       }
-      galleryFluid: gallery {
+      gallery {
         fluid(resizingBehavior: FILL, cropFocus: CENTER) {
           ...GatsbyContentfulFluid
         }
@@ -180,7 +161,7 @@ export const pageQuery = graphql`
               content
             }
           }
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }

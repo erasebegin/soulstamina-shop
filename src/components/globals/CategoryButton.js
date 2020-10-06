@@ -15,7 +15,6 @@ const Button = styled.button`
   background: #b18d17;
   padding: 0.5em 0.75em;
   border: none;
-  border-radius: ${({ size }) => (size === "small" ? "10px" : 0)};
   font-family: "Heebo", sans-serif;
   font-weight: 400;
   letter-spacing: 0.08em;

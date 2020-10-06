@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import ModalImage from "react-modal-image";
+
 import ImageCarousel from "./ImageCarousel";
 import AddToCartButton from "../cart/AddToCartButton";
 
@@ -8,18 +10,16 @@ export default function ProductPageHeader({
   title,
   price,
   description,
-  galleryFluid,
   galleryThumbnail,
-  snipcartThumbnail,
-  image,
+  gallery,
   id,
   slug,
   isMobile
 }) {
-  const [currDispImg, setCurrDispImg] = useState(image.fluid);
+  const [currDispImg, setCurrDispImg] = useState(gallery[0].fluid);
 
   const setCurrImg = index => {
-    setCurrDispImg(galleryFluid[index].fluid);
+    setCurrDispImg(gallery[index].fluid);
   };
 
   return (
@@ -27,7 +27,8 @@ export default function ProductPageHeader({
       <Container className="section is-desktop is-centered my-4">
         <div className="columns">
           <figure className="image column is-half-desktop">
-            <Img fluid={currDispImg} className="product-image-main" />
+            {/* <Img fluid={currDispImg} className="product-image-main" /> */}
+            <ModalImage small={currDispImg.src} large={currDispImg.src} className="product-image-main" />
           </figure>
           <div className="column py-0 is-half-desktop product-header-info">
             <p className="is-size-3 is-light is-centered product-header-title">
@@ -53,7 +54,7 @@ export default function ProductPageHeader({
                   <AddToCartButton
                     id={id}
                     title={title}
-                    image={snipcartThumbnail}
+                    image={gallery[0].fluid.src}
                     price={price}
                     description={description.description}
                     slug={slug}
@@ -62,7 +63,7 @@ export default function ProductPageHeader({
                   <AddToCartButton
                     id={id}
                     title={title}
-                    image={snipcartThumbnail}
+                    image={gallery[0].fluid.src}
                     price={price}
                     description={description.description}
                     slug={slug}
@@ -85,8 +86,9 @@ const Container = styled.div`
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1500px) {
     width: 100%;
     max-width: 80vw;
   }
@@ -96,9 +98,9 @@ const Container = styled.div`
     object-fit: cover;
     order: 2;
 
-    @media (min-width: 600px) {
+    @media (min-width: 750px) {
       max-width: 100%;
-      max-height: 70vh;
+      height: 600px;
     }
   }
 
@@ -144,7 +146,7 @@ const Container = styled.div`
       }
     }
 
-    @media (min-width: 780px) {
+    @media (min-width: 1000px) {
       .product-header-title {
         order: 1;
       }
@@ -158,9 +160,6 @@ const Container = styled.div`
       .padding {
         order: 3;
         padding: 1em;
-      }
-      .price-button-container {
-        align-items: start;
       }
     }
   }

@@ -4,7 +4,16 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 
 export default function ProductCardFeatured({ data, isMobile }) {
-  const { title, description, fluid, slug } = data;
+  console.log(data);
+  const { title, description, gallery, slug } = data;
+
+  const image = gallery[0].fluid;
+
+  let trimmedDescription = description.internal.content;
+
+  if(trimmedDescription.length > 200) {
+    trimmedDescription = trimmedDescription.slice(0,199).concat("...");
+  }
 
   if (isMobile) {
     return (
@@ -15,7 +24,7 @@ export default function ProductCardFeatured({ data, isMobile }) {
           </div>
           <div className="product-image">
             <Link to={`/${slug}`}>
-              <Img fluid={fluid.fluid} className="main-image" />
+              <Img fluid={image} className="main-image" />
             </Link>
           </div>
           <div className="column product-info">
@@ -25,7 +34,7 @@ export default function ProductCardFeatured({ data, isMobile }) {
               </Link>
               <h2>by yana</h2>
               <p className="mt-3 mb-2">
-                {description.internal.content}{" "}
+                {trimmedDescription}{" "}
                 <Link to={`/${slug}`} className="more-link">
                   MORE &gt;&gt;
                 </Link>
@@ -42,7 +51,7 @@ export default function ProductCardFeatured({ data, isMobile }) {
           <div className="columns wrapper">
             <div className="column is-one-third product-image">
               <Link to={`/${slug}`}>
-                <Img fluid={fluid.fluid} className="main-image" />
+                <Img fluid={image} className="main-image" />
               </Link>
             </div>
             <div className="column product-info">
@@ -55,7 +64,7 @@ export default function ProductCardFeatured({ data, isMobile }) {
                 </Link>
                 <h2>by yana</h2>
                 <p className="mt-3 mb-2">
-                  {description.internal.content}{" "}
+                  {trimmedDescription}{" "}
                   <Link to={`/${slug}`} className="more-link">
                     MORE &gt;&gt;
                   </Link>
@@ -75,6 +84,8 @@ const CardSmall = styled.div`
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   background: #bc9f75;
+  max-width: 500px;
+  margin: auto;
 
   .featured {
     width: 50%;
@@ -100,7 +111,7 @@ const CardSmall = styled.div`
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 30px 0 rgba(0, 0, 0, 0.19);
       border-top-left-radius: 0;
-      max-height: 96.5%;
+      max-height: 400px;
       margin: 0 auto;
       object-fit: cover;
     }
@@ -129,7 +140,7 @@ const CardSmall = styled.div`
       p {
         color: #8d8d8d;
         line-height: 1.7em;
-        font-size: 15px;
+        font-size: 1.2rem;
         font-weight: lighter;
         overflow: hidden;
 
@@ -152,20 +163,20 @@ const CardLarge = styled.div`
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    height: 300px;
+    /* height: 300px; */
     background: #8f795a;
   }
 
   .product-image {
     padding: 0;
     .main-image {
-      z-index: 100;
       -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
       -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 30px 0 rgba(0, 0, 0, 0.19);
       width: 100%;
-      max-height: 96.5%;
+      max-height: 400px;
+      min-height: 300px;
       margin: 0 auto;
       margin-top: -3.5%;
       margin-left: 4%;
@@ -216,9 +227,9 @@ const CardLarge = styled.div`
       p {
         color: #8d8d8d;
         line-height: 1.7em;
-        font-size: 15px;
+        font-size: 1.3rem;
         font-weight: lighter;
-        overflow: hidden;
+        text-overflow: ellipsis;
 
         .more-link {
           color: #bc9f75;

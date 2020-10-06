@@ -23,7 +23,7 @@ const PrintPage = ({ data }) => {
   };
 
   useEffect(() => {
-    window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
 
     if (featuredItem) {
       removeFeaturedItem();
@@ -44,7 +44,7 @@ const PrintPage = ({ data }) => {
     <>
       <SEO title="prints" />
       <Layout>
-        <Title title="prints" subtitle="by soulstamina" />
+        <Title title="prints" subtitle="by yana soulstamina" />
         {featuredItem ? (
           <FeaturedProduct
             data={data.featured.edges[0].node}
@@ -98,7 +98,7 @@ export const query = graphql`
           slug
           productCategory
           title
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }

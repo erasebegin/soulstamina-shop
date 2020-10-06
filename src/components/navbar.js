@@ -75,6 +75,7 @@ export default Navbar;
 const Nav = styled.nav`
   background: white;
   z-index: 0;
+  font-family: 'Heebo', sans-serif;
 
   .navbar-item {
     font-weight: 400;

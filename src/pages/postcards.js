@@ -20,7 +20,7 @@ const PostcardsPage = ({ data }) => {
   };
 
   useEffect(() => {
-    window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
 
     removeFeaturedItem();
   }, []);
@@ -37,7 +37,7 @@ const PostcardsPage = ({ data }) => {
     <>
       <SEO title="Postcards" />
       <Layout>
-        <Title title="postcards" subtitle="by soulstamina" />
+        <Title title="postcards" subtitle="by yana soulstamina" />
         <FeaturedProduct
           data={data.featured.edges[0].node}
           isMobile={isMobile}
@@ -63,7 +63,7 @@ export const query = graphql`
           slug
           productCategory
           title
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }
@@ -87,7 +87,7 @@ export const query = graphql`
           slug
           productCategory
           title
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }

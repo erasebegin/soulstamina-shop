@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    window.innerWidth <= 800 ? setIsMobile(true) : setIsMobile(false);
+    window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
   });
 
   if (typeof window === "undefined") {
@@ -86,17 +86,7 @@ export const query = graphql`
           slug
           productCategory
           title
-          large: image {
-            fixed(height: 400, width: 250, resizingBehavior: CROP) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          small: image {
-            fixed(height: 250, width: 300, resizingBehavior: CROP) {
-              ...GatsbyContentfulFixed
-            }
-          }
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }
