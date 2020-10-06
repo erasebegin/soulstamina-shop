@@ -75,7 +75,7 @@ export default Navbar;
 const Nav = styled.nav`
   background: white;
   z-index: 0;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
 
   .navbar-item {
     font-weight: 400;
@@ -132,7 +132,7 @@ const Nav = styled.nav`
     transition: ease-in-out 200ms;
     margin: auto;
     margin-right: 2em;
-    margin-top: .5em;
+    margin-top: 0.5em;
     padding-left: 0.6em;
 
     &:hover {
@@ -149,12 +149,12 @@ const Nav = styled.nav`
   }
 
   .main-logo {
-    min-height: 60px;
-    margin: 1em;
-    margin-right: 2em;
+    min-height: 40px;
 
-    @media (max-width: 1125px) {
-      min-height: 30px;
+    @media (min-width: 1125px) {
+      min-height: 60px;
+      margin: 1em;
+      margin-right: 2em;
     }
   }
 `;

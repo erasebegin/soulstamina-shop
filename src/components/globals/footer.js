@@ -23,7 +23,9 @@ const Footer = () => (
     `}
     render={(data) => (
       <Container className="has-background-light is-paddingless">
-        <img src={logo} className="logo" />
+        <Link to="/">
+          <img src={logo} className="logo" />
+        </Link>
         <div className="container-right">
           <article className="icon-container">
             <span>
@@ -64,8 +66,8 @@ const Container = styled.footer`
   padding: 0;
 
   .logo {
-    max-height: 70px;
-    padding: 1em 1em;
+    max-height: 80px;
+    padding: .5em .5em;
     opacity: 70%;
   }
 

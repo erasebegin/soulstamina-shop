@@ -49,7 +49,7 @@ gap: .75em;
   padding: 0em 0.4em 0 0.3em;
   border: none;
   color: #bc9f75;
-  background: #fff8ee;
+  background: #fff8ee00;
   cursor: pointer;
   transition: ease-out 200ms;
 
