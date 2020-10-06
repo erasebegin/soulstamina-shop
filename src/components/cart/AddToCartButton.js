@@ -19,7 +19,7 @@ export default function AddToCartButton({
         data-item-price={price}
         data-item-url={`/${slug}`}
         data-item-description={description}
-        data-item-image={image ? image.fixed.src : null}
+        data-item-image={image}
         data-item-name={title}
       >
         add to cart <FaCartPlus />
@@ -33,7 +33,7 @@ export default function AddToCartButton({
         data-item-price={price}
         data-item-url={`/${slug}`}
         data-item-description={description}
-        data-item-image={image ? image.fixed.src : null}
+        data-item-image={image}
         data-item-name={title}
       >
         <FaCartPlus size="1.8rem" />

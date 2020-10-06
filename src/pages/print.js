@@ -74,7 +74,7 @@ export const query = graphql`
           slug
           productCategory
           title
-          fluid: image {
+          gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }
