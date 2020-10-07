@@ -33,7 +33,7 @@ export default function HeroCarousel({ data, isMobile }) {
     <Container className="hero is-medium">
       <Carousel autoPlay infiniteLoop {...getConfigurableProps()}>
         {data.map((item, index) => {
-          const defaultImage = item.node.product.image.file.url;
+          const defaultImage = item.node.product.gallery[0].file.url;
           const largeImage = item.node.largeImage
             ? item.node.largeImage.file.url
             : null;

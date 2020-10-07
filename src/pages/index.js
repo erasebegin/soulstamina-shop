@@ -64,13 +64,13 @@ export const query = graphql`
             }
           }
           product {
-            image {
+            slug
+            title
+            gallery {
               file {
                 url
               }
             }
-            slug
-            title
           }
         }
       }
