@@ -29,25 +29,4 @@ const ContactPage = ({ data }) => {
   );
 };
 
-// export const query = graphql`
-//   {
-//     headerImage: allContentfulHeaderImages(sort: { fields: createdAt }) {
-//       edges {
-//         node {
-//           contact {
-//             fluid(cropFocus: CENTER, resizingBehavior: FILL) {
-//               ...GatsbyContentfulFluid
-//             }
-//           }
-//            contactSmall {
-//              fluid(cropFocus: CENTER, resizingBehavior: FILL) {
-//                ...GatsbyContentfulFluid
-//              }
-//            }
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export default ContactPage;

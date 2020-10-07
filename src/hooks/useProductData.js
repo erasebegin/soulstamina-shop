@@ -13,11 +13,6 @@ const useProductData = id => {
             slug
             productCategory
             title
-            image {
-              file {
-                url
-              }
-            }
             description {
               internal {
                 content
