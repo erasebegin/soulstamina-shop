@@ -13,6 +13,10 @@ import "../components/style.scss";
 const IndexPage = ({ data }) => {
   const [isMobile, setIsMobile] = useState(true);
 
+  const featuredList = data.featured.edges;
+  const firstFeatured = featuredList[0];
+  const firstFeaturedRemoved = featuredList.slice(1, featuredList.length);
+
   useEffect(() => {
     window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
   });
@@ -31,12 +35,12 @@ const IndexPage = ({ data }) => {
       <Layout>
         <Carousel data={data.hero.edges} isMobile={isMobile} />
         <FeaturedProduct
-          data={data.featured.edges[0].node}
+          data={firstFeatured.node}
           isMobile={isMobile}
         />
         <section className="section recent-products">
           <Title title="recent." />
-          <ProductList items={data.featured.edges} isMobile={isMobile} />
+          <ProductList items={firstFeaturedRemoved} isMobile={isMobile} />
         </section>
       </Layout>
     </>
@@ -64,7 +68,6 @@ export const query = graphql`
             }
           }
           product {
-            slug
             title
             gallery {
               file {
@@ -83,8 +86,9 @@ export const query = graphql`
         node {
           id
           price
-          slug
-          productCategory
+          category {
+            title
+          }
           title
           gallery {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {

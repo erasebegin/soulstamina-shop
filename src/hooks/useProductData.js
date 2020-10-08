@@ -10,8 +10,9 @@ const useProductData = id => {
           node {
             id
             price
-            slug
-            productCategory
+            category {
+              title
+            }
             title
             description {
               internal {

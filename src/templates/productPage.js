@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import { MDXProvider } from "@mdx-js/react";
 
+import generateSlug from "../utils/GenerateSlug"
 import ProductPageHeader from "../components/product-page/ProductPageHeader";
 import ProductList from "../components/products/ProductList";
 import Layout from "../components/layout";
@@ -18,18 +19,15 @@ const ProductPage = ({ data }) => {
     galleryThumbnail,
     gallery,
     body,
-    slug,
-    productCategory
+    category,
   } = data.singleProduct;
 
   const [isMobile, setIsMobile] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
   const getRelatedItems = () => {
-    const related = data.multipleProducts.edges.filter(item => {
-      return (
-        item.node.productCategory === productCategory && item.node.id !== id
-      );
+    const related = data.multipleProducts.edges.filter((item) => {
+      return item.node.category.title === category.title && item.node.id !== id;
     });
     setRelatedItems(related);
   };
@@ -60,7 +58,7 @@ const ProductPage = ({ data }) => {
               price={price}
               description={description}
               id={id}
-              slug={slug}
+              slug={generateSlug(title)}
               isMobile={isMobile}
             />
             {body ? (
@@ -74,7 +72,7 @@ const ProductPage = ({ data }) => {
             )}
             <div className="section more-list">
               <h2 className="heading is-lowercase">
-                more in the <span>{productCategory}</span> category
+                more in the <span>{category.title}</span> category
               </h2>
               <ProductList
                 limit={3}
@@ -122,12 +120,13 @@ const Container = styled.div`
   }
 `;
 export const pageQuery = graphql`
-  query($slug: String!) {
-    singleProduct: contentfulProduct(slug: { eq: $slug }) {
+  query($id: String!) {
+    singleProduct: contentfulProduct(id: { eq: $id }) {
       id
       title
-      productCategory
-      slug
+      category {
+        title
+      }
       price
       description {
         description
@@ -168,8 +167,9 @@ export const pageQuery = graphql`
           }
           id
           price
-          productCategory
-          slug
+          category {
+            title
+          }
           title
         }
       }

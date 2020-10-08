@@ -1,27 +1,28 @@
 import React from "react";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
-import CategoryButton from "../globals/CategoryButton";
 import styled from "styled-components";
+
+import generateSlug from "../../utils/GenerateSlug"
+import CategoryButton from "../globals/CategoryButton";
 import CartButton from "../cart/AddToCartButton";
 
-export default function productCard({ data }) {
+export default function productCard({ data, nodeless }) {
   const {
     id,
     title,
     description,
     price,
-    slug,
-    productCategory: category,
+    category,
     gallery
-  } = data.node;
+  } = data ? data.node : nodeless;
 
   return (
     <Card className="column">
       <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image">
-            <Link to={`/${slug}`}>
+            <Link to={`/${generateSlug(title)}`}>
               <Img
                 fluid={gallery[0].fluid}
                 className="product-image"
@@ -32,10 +33,10 @@ export default function productCard({ data }) {
         </div>
         <div className="card-content">
           <div className="title-container">
-            <Link to={`/${slug}`}>
+            <Link to={`/${generateSlug(title)}`}>
               <p className="card-title">{title.toLowerCase()}</p>
             </Link>
-            <CategoryButton title={category} category={category} />
+            <CategoryButton title={category.title} category={category.title} />
           </div>
           <div className="content">
             <p>{description.internal.content}</p>
@@ -48,7 +49,7 @@ export default function productCard({ data }) {
             title={title}
             description={description.internal.content}
             image={gallery[0].fluid.src}
-            slug={slug}
+            slug={generateSlug(title)}
             price={price}
           />
         </div>

@@ -3,30 +3,31 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
+import generateSlug from "../../utils/GenerateSlug"
 import CategoryButton from "../globals/CategoryButton";
 import CartButton from "../cart/AddToCartButton";
 
-export default function productCardLarge({ data }) {
+export default function productCardLarge({ data, nodeless }) {
   const {
     title,
     description,
     price,
     gallery,
-    slug,
     id,
-    productCategory: category,
-  } = data.node;
+    category,
+  } = data ? data.node : nodeless;
+  console.log({nodeless})
   return (
     <Card>
       <div className="product-image-container">
-        <Link to={`/${slug}`}>
+        <Link to={`/${generateSlug(title)}`}>
           <Img fluid={gallery[0].fluid} className="product-image" />
         </Link>
-        <CategoryButton category={category} title={category} size="large" />
+        <CategoryButton category={category.title} title={category.title} size="large" />
       </div>
       <div className="column product-info">
         <div className="top-wrapper">
-          <Link to={`/${slug}`}>
+          <Link to={`/${generateSlug(title)}`}>
             <h1>{title.toLowerCase()}</h1>
           </Link>
           <hr />
@@ -38,7 +39,7 @@ export default function productCardLarge({ data }) {
             title={title}
             description={description.internal.content}
             image={gallery[0].fluid.src}
-            slug={slug}
+            slug={generateSlug(title)}
             price={price}
           />
           <p className="price">${price}&nbsp;</p>

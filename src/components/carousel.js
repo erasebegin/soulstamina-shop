@@ -6,6 +6,8 @@ import { FiChevronsRight } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
 import { boolean, number } from "@storybook/addon-knobs";
 
+import generateSlug from "../utils/GenerateSlug";
+
 export default function HeroCarousel({ data, isMobile }) {
   const tooglesGroupId = "Toggles";
   const valuesGroupId = "Values";
@@ -43,7 +45,7 @@ export default function HeroCarousel({ data, isMobile }) {
 
           return (
             <div className="img-container" key={index}>
-              <Link to={`/${item.node.product.slug}`}>
+              <Link to={`/${generateSlug(item.node.product.title)}`}>
                 {largeImage ? (
                   smallImage && isMobile ? (
                     <img src={smallImage} />
@@ -58,7 +60,7 @@ export default function HeroCarousel({ data, isMobile }) {
               </Link>
               <Link to={`/${item.node.product.slug}`}>
                 <Button className="legend" color={item.node.textColor}>
-                  EXPLORE <FiChevronsRight size="1.3em" className="chevrons"/>
+                  EXPLORE <FiChevronsRight size="1.3em" className="chevrons" />
                 </Button>
               </Link>
             </div>
@@ -84,7 +86,8 @@ const Button = styled.p`
   color: ${({ color }) => (color === "Dark" ? "white" : "#BC9F75")} !important;
   background: ${({ color }) =>
     color === "Dark" ? "#BC9F75" : "white"} !important;
-  /* border: 3px solid ${({ color }) => (color === "Dark" ? "#6e6546" : "white")} !important; */
+  /* border: 3px solid ${({ color }) =>
+    color === "Dark" ? "#6e6546" : "white"} !important; */
   opacity: 100 !important;
   font-weight: 600 !important;
   font-size: 1.4rem !important;
@@ -109,7 +112,8 @@ const Button = styled.p`
   &:hover {
     background: ${({ color }) =>
       color === "Dark" ? "white" : "#BC9F75"} !important;
-    color: ${({ color }) => (color === "Dark" ? "#BC9F75" : "white")} !important;
+    color: ${({ color }) =>
+      color === "Dark" ? "#BC9F75" : "white"} !important;
     transition: ease-in-out 200ms !important;
   }
 

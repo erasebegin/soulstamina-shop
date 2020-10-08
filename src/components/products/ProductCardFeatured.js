@@ -3,9 +3,13 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
+import generateSlug from "../../utils/GenerateSlug"
+
 export default function ProductCardFeatured({ data, isMobile }) {
   console.log(data);
-  const { title, description, gallery, slug } = data;
+  const { title, description, gallery } = data;
+
+  const slug = generateSlug(title);
 
   const image = gallery[0].fluid;
 

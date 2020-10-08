@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
+import generateSlug from "../../utils/GenerateSlug"
+
 export default function CategoryButton({ title, category, size }) {
   return (
-    <Link to={`/${category.toLowerCase()}`}>
+    <Link to={`/categories/${generateSlug(category.toLowerCase())}`}>
       <Button size={size}>{title.toLowerCase()}</Button>
     </Link>
   );

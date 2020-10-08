@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 export default function ProductList({
   items,
+  nodeless,
   isMobile,
   limit,
-  columnSize
+  columnSize,
 }) {
   if (items) {
     const products = items.slice(0, limit);
@@ -21,6 +22,25 @@ export default function ProductList({
               return (
                 <div className={`column ${columnSize}`}>
                   <ProductCardLarge data={product} key={index} />
+                </div>
+              );
+            }
+          })}
+        </div>
+      </Container>
+    );
+  } else if (nodeless) {
+    const products = nodeless.slice(0, limit);
+    return (
+      <Container className="is-paddingless">
+        <div className="card-container">
+          {products.map((product, index) => {
+            if (isMobile === true) {
+              return <ProductCard nodeless={product} key={index} />;
+            } else {
+              return (
+                <div className={`column ${columnSize}`}>
+                  <ProductCardLarge nodeless={product} key={index} />
                 </div>
               );
             }
@@ -50,5 +70,5 @@ const Container = styled.section`
 ProductList.defaultProps = {
   limit: 5,
   cardClass: "columns is-desktop is-multiline",
-  columnSize: "is-half"
+  columnSize: "is-half",
 };

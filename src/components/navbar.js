@@ -1,12 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 
+import generateSlug from "../utils/GenerateSlug";
 import "./style.scss";
 import soulstaminaLogo from "../images/soulstamina_logo_2020.png";
 
+const NavCategories = ({ data }) => {
+  return (
+    <div className="dynamic-nav-container">
+      {data.allContentfulProductCategories.edges.map((item) => {
+        return (
+          <Link
+            to={`/categories/${generateSlug(item.node.title)}`}
+            className="navbar-item"
+          >
+            {item.node.title}
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
 const Navbar = () => {
+  const data = useStaticQuery(graphql`
+    query categories {
+      allContentfulProductCategories {
+        edges {
+          node {
+            title
+            id
+          }
+        }
+      }
+    }
+  `);
+
   const [navActive, setNavActive] = useState("");
 
   const setNav = () => {
@@ -39,18 +70,10 @@ const Navbar = () => {
           <Link to="/about" className="navbar-item">
             about
           </Link>
-          <Link to="/print" className="navbar-item">
-            print
-          </Link>
-          <Link to="/canvas" className="navbar-item">
-            canvas
-          </Link>
-          <Link to="/postcards" className="navbar-item">
-            postcards
-          </Link>
           <Link to="/contact" className="navbar-item">
             contact
           </Link>
+          <NavCategories data={data} />
           <a
             href="https://www.soulstamina.art"
             target="_blank"
@@ -89,6 +112,15 @@ const Nav = styled.nav`
 
     @media (min-width: 1125px) {
       font-size: initial !important;
+    }
+  }
+
+  .dynamic-nav-container {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1000px) {
+      flex-direction: row;
     }
   }
 
