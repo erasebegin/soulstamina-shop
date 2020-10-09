@@ -17,6 +17,7 @@ const ProductPage = ({ data }) => {
     description,
     price,
     galleryThumbnail,
+    galleryFixed,
     gallery,
     body,
     category,
@@ -53,6 +54,7 @@ const ProductPage = ({ data }) => {
           <div className="column">
             <ProductPageHeader
               title={title}
+              galleryFixed={galleryFixed}
               galleryThumbnail={galleryThumbnail}
               gallery={gallery}
               price={price}
@@ -149,6 +151,11 @@ export const pageQuery = graphql`
       gallery {
         fluid(resizingBehavior: FILL, cropFocus: CENTER) {
           ...GatsbyContentfulFluid
+        }
+      }
+      galleryFixed: gallery {
+        fixed(resizingBehavior: FILL) {
+          ...GatsbyContentfulFixed
         }
       }
     }

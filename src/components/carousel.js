@@ -58,7 +58,7 @@ export default function HeroCarousel({ data, isMobile }) {
                   <img src={defaultImage} />
                 )}
               </Link>
-              <Link to={`/${item.node.product.slug}`}>
+              <Link to={`/${generateSlug(item.node.product.title)}`}>
                 <Button className="legend" color={item.node.textColor}>
                   EXPLORE <FiChevronsRight size="1.3em" className="chevrons" />
                 </Button>

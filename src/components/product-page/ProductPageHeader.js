@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import ModalImage from "react-modal-image";
+import ImageModal from "./ImageModal";
 
 import ImageCarousel from "./ImageCarousel";
 import AddToCartButton from "../cart/AddToCartButton";
@@ -11,24 +11,52 @@ export default function ProductPageHeader({
   price,
   description,
   galleryThumbnail,
+  galleryFixed,
   gallery,
   id,
   slug,
-  isMobile
+  isMobile,
 }) {
-  const [currDispImg, setCurrDispImg] = useState(gallery[0].fluid);
+  const [currDispFluid, setCurrDispFluid] = useState(gallery[0].fluid);
+  const [currDispFixed, setCurrDispFixed] = useState(galleryFixed[0].fixed);
+  const [displayCarousel, setDisplayCarousel] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
 
-  const setCurrImg = index => {
-    setCurrDispImg(gallery[index].fluid);
+  useEffect(() => {
+    if (gallery.length > 1) {
+      setDisplayCarousel(true);
+    }
+  }, []);
+
+  const setCurrImg = (index) => {
+    setCurrDispFluid(gallery[index].fluid);
+    setCurrDispFixed(galleryFixed[index].fixed);
+  };
+
+  const openModal = () => {
+    setDisplayModal(true);
+  };
+
+  const closeModal = () => {
+    setDisplayModal(false);
   };
 
   return (
     <>
-      <Container className="section is-desktop is-centered my-4">
+      <Container
+        className="section is-desktop is-centered my-4"
+        displayCarousel={displayCarousel}
+      >
+        <ImageModal
+          imageFixed={currDispFixed}
+          imageFluid={currDispFluid}
+          open={displayModal}
+          close={closeModal}
+          isMobile={isMobile}
+        />
         <div className="columns">
-          <figure className="image column is-half-desktop">
-            {/* <Img fluid={currDispImg} className="product-image-main" /> */}
-            <ModalImage small={currDispImg.src} large={currDispImg.src} className="product-image-main" />
+          <figure className="image column is-half-desktop" onClick={openModal}>
+            <Img fluid={currDispFluid} className="product-image-main" />
           </figure>
           <div className="column py-0 is-half-desktop product-header-info">
             <p className="is-size-3 is-light is-centered product-header-title">
@@ -122,6 +150,7 @@ const Container = styled.div`
       padding: 0.5em;
     }
     .carousel-container {
+      display: ${(props) => (props.displayCarousel ? "initial" : "none")};
       order: 1;
     }
     .price-button-container {

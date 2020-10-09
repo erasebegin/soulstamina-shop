@@ -6,7 +6,6 @@ import styled from "styled-components";
 import generateSlug from "../../utils/GenerateSlug"
 
 export default function ProductCardFeatured({ data, isMobile }) {
-  console.log(data);
   const { title, description, gallery } = data;
 
   const slug = generateSlug(title);
