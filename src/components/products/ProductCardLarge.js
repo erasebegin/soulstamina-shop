@@ -3,27 +3,26 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
-import generateSlug from "../../utils/GenerateSlug"
+import generateSlug from "../../utils/GenerateSlug";
 import CategoryButton from "../globals/CategoryButton";
 import CartButton from "../cart/AddToCartButton";
 
 export default function productCardLarge({ data, nodeless }) {
-  const {
-    title,
-    description,
-    price,
-    gallery,
-    id,
-    category,
-  } = data ? data.node : nodeless;
-  console.log({nodeless})
+  const { title, description, price, gallery, id, category } = data
+    ? data.node
+    : nodeless;
+  console.log({ nodeless });
   return (
     <Card>
       <div className="product-image-container">
         <Link to={`/${generateSlug(title)}`}>
           <Img fluid={gallery[0].fluid} className="product-image" />
         </Link>
-        <CategoryButton category={category.title} title={category.title} size="large" />
+        <CategoryButton
+          category={category.title}
+          title={category.title}
+          size="large"
+        />
       </div>
       <div className="column product-info">
         <div className="top-wrapper">
@@ -31,13 +30,13 @@ export default function productCardLarge({ data, nodeless }) {
             <h1>{title.toLowerCase()}</h1>
           </Link>
           <hr />
-          <p>{description.internal.content}</p>
+          <p>{description ? description.internal.content : ""}</p>
         </div>
         <div className="price-button-container">
           <CartButton
             id={id}
             title={title}
-            description={description.internal.content}
+            description={description ? description.internal.content : ""}
             image={gallery[0].fluid.src}
             slug={generateSlug(title)}
             price={price}

@@ -3,19 +3,14 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
-import generateSlug from "../../utils/GenerateSlug"
+import generateSlug from "../../utils/GenerateSlug";
 import CategoryButton from "../globals/CategoryButton";
 import CartButton from "../cart/AddToCartButton";
 
 export default function productCard({ data, nodeless }) {
-  const {
-    id,
-    title,
-    description,
-    price,
-    category,
-    gallery
-  } = data ? data.node : nodeless;
+  const { id, title, description, price, category, gallery } = data
+    ? data.node
+    : nodeless;
 
   return (
     <Card className="column">
@@ -39,7 +34,7 @@ export default function productCard({ data, nodeless }) {
             <CategoryButton title={category.title} category={category.title} />
           </div>
           <div className="content">
-            <p>{description.internal.content}</p>
+            <p>{description ? description.internal.content : ""}</p>
           </div>
         </div>
         <div className="footer">
@@ -47,7 +42,7 @@ export default function productCard({ data, nodeless }) {
           <CartButton
             id={id}
             title={title}
-            description={description.internal.content}
+            description={description ? description.internal.content : ""}
             image={gallery[0].fluid.src}
             slug={generateSlug(title)}
             price={price}
