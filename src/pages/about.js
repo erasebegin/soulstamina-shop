@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import { MDXProvider } from "@mdx-js/react";
 import Img from "gatsby-image";
+import BackgroundImage from "gatsby-background-image";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -11,6 +12,7 @@ import styled from "styled-components";
 
 export default function about({ data }) {
   const aboutData = data.about.edges[0].node;
+  console.log({ data });
 
   return (
     <>
@@ -27,22 +29,46 @@ export default function about({ data }) {
           </div>
           <div className="header-container">
             <div className="title-image-container">
-              <div className="image-container">
-                <Img fluid={aboutData.image.fluid} className="image image1" />
-              </div>
+              <BackgroundImage
+                className="image"
+                fluid={aboutData.image.fluid}
+                backgroundColor={`#040e18`}
+              >
+                <Img
+                  fluid={data.polaroid.childImageSharp.fluid}
+                  className="image-foreground image1"
+                />
+              </BackgroundImage>
 
-              <div className="image-container">
-                <Img fluid={aboutData.image2.fluid} className="image image2" />
-              </div>
-              <div className="image-container">
-                <Img fluid={aboutData.image3.fluid} className="image image3" />
-              </div>
+              <BackgroundImage
+                className="image"
+                fluid={aboutData.image2.fluid}
+                backgroundColor={`#040e18`}
+              >
+                <Img
+                  fluid={data.polaroid.childImageSharp.fluid}
+                  className="image-foreground image2"
+                />
+              </BackgroundImage>
+              <BackgroundImage
+                className="image"
+                fluid={aboutData.image3.fluid}
+                backgroundColor={`#040e18`}
+              >
+                <Img
+                  fluid={data.polaroid.childImageSharp.fluid}
+                  className="image-foreground image3"
+                />
+              </BackgroundImage>
             </div>
-            <div className="header-text-container">
+            <BackgroundImage
+              fluid={data.canvas.childImageSharp.fluid}
+              className="header-text-container"
+            >
               <div className="header-text">
                 {aboutData.headerText.internal.content}
               </div>
-            </div>
+            </BackgroundImage>
           </div>
           {aboutData.body ? (
             <MDXProvider>
@@ -90,45 +116,42 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      .image-container {
-        transform: rotate(-5deg);
-        background: white;
+
+      .image {
+        width: 300px;
+        height: 300px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
           0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        padding: 1em;
-        margin-bottom: 3em;
-
-        .image {
-          width: 200px;
-          height: 200px;
-          margin-bottom: 20px;
-        }
-
-        &:nth-child(2) {
-          transform: rotate(5deg);
-          margin: 0 -1em 0 -2em;
-
-          .image {
-            width: 300px;
-            height: 300px;
-          }
-
-          @media (min-width: 900px) {
-            margin: 0 2em 0 1em;
-            transform: rotate(20deg);
-
-            .image {
-              width: 200px;
-              height: 200px;
-            }
-          }
-        }
+        margin-bottom: 1.5em;
 
         &:nth-child(odd) {
           display: none;
-          @media (min-width: 900px) {
+        }
+
+        &:nth-child(1) {
+          transform: rotate(-5deg);
+        }
+        &:nth-child(2) {
+          transform: rotate(1deg);
+        }
+        &:nth-child(3) {
+          transform: rotate(3deg);
+        }
+
+        .image-foreground {
+          margin: -0.2em;
+        }
+
+        @media (min-width: 900px) {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 1em;
+          &:nth-child(odd) {
             display: initial;
           }
+          &:nth-child(2) {
+          transform: rotate(5deg);
+        }
         }
       }
     }
@@ -139,15 +162,12 @@ const Container = styled.div`
       padding-left: 2em;
       max-width: 800px;
       font-size: 1.3rem;
-      background: url(https://i.ibb.co/v1x9Tkz/White-Empty-Canvas-Texture.jpg);
       background-size: 25%;
-      transform: rotate(0deg);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      z-index: 30;
 
       @media (min-width: 900px) {
-        transform: rotate(1deg);
+        margin-top: 1em;
       }
     }
   }
@@ -157,7 +177,7 @@ const Container = styled.div`
     font-size: 1.2rem;
     max-width: 700px;
     margin: auto;
-    margin-top: 4em;
+    margin-top: 2em;
 
     p {
       margin-bottom: 3em;
@@ -167,6 +187,20 @@ const Container = styled.div`
 
 export const query = graphql`
   {
+    polaroid: file(relativePath: { eq: "polaroid-frame.png" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    canvas: file(relativePath: { eq: "texture_canvas.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     about: allContentfulAboutPage(limit: 1, sort: { fields: updatedAt }) {
       edges {
         node {

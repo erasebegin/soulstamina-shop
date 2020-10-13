@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: "Soulstamina",
@@ -84,6 +86,13 @@ module.exports = {
       options: {
         apiKey: process.env.SNIPCART_API_KEY
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
   ],
 };
