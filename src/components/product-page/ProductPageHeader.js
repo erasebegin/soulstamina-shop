@@ -63,7 +63,7 @@ export default function ProductPageHeader({
               {title}
             </p>
             <p className="is-size-5 is-size-6-mobile is-italic product-header-description">
-              {description.description}
+              {description ? description.description : ""}
             </p>
             <div className="carousel-container">
               {galleryThumbnail !== null && galleryThumbnail.length > 0 ? (
