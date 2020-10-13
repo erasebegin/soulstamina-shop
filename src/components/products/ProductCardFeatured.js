@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
-import generateSlug from "../../utils/GenerateSlug"
+import generateSlug from "../../utils/GenerateSlug";
 
 export default function ProductCardFeatured({ data, isMobile }) {
   const { title, description, gallery } = data;
@@ -12,10 +12,10 @@ export default function ProductCardFeatured({ data, isMobile }) {
 
   const image = gallery[0].fluid;
 
-  let trimmedDescription = description.internal.content;
+  let trimmedDescription = description ? description.internal.content : "";
 
-  if(trimmedDescription.length > 200) {
-    trimmedDescription = trimmedDescription.slice(0,199).concat("...");
+  if (trimmedDescription.length > 200) {
+    trimmedDescription = trimmedDescription.slice(0, 199).concat("...");
   }
 
   if (isMobile) {

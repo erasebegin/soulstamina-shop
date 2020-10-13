@@ -11,8 +11,6 @@ const CategoryPage = ({ data }) => {
   const [isMobile, setIsMobile] = useState(null);
   const [productList, setProductList] = useState(null);
 
-  console.log(data)
-
   const featuredArr = data.categories.product.filter((item) => {
     return item.featured === true;
   });
