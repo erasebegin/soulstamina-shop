@@ -84,7 +84,7 @@ export default function ProductPageHeader({
                     title={title}
                     image={gallery[0].fluid.src}
                     price={price}
-                    description={description.description}
+                    description={description ? description.description : ""}
                     slug={slug}
                   />
                 ) : (
@@ -93,7 +93,7 @@ export default function ProductPageHeader({
                     title={title}
                     image={gallery[0].fluid.src}
                     price={price}
-                    description={description.description}
+                    description={description ? description.description : ""}
                     slug={slug}
                     alt
                   />
