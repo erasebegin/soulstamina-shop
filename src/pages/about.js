@@ -10,6 +10,16 @@ import SEO from "../components/seo";
 import Title from "../components/globals/Title";
 import styled from "styled-components";
 
+import loadable from "@loadable/component";
+
+// import BackgroundImage from "gatsby-background-image";
+// gatsby-background-image was causing HTML build error since it tried to access the window object which is not available at build time
+
+// this setup will work for gatsby build, but will break when using gatsby develop. While using gatsby develop, switch BackgroundImage to normal
+// import instead of using @loadable/component
+
+const BackgroundImage = loadable(() => import("gatsby-background-image"));
+
 export default function about({ data }) {
   const aboutData = data.about.edges[0].node;
   console.log({ data });
