@@ -11,7 +11,13 @@ export default function productCardLarge({ data, nodeless }) {
   const { title, description, price, gallery, id, category } = data
     ? data.node
     : nodeless;
-  console.log({ nodeless });
+
+    let trimmedDescription = description ? description.internal.content : "";
+
+    if (trimmedDescription.length > 150) {
+      trimmedDescription = trimmedDescription.slice(0, 149).concat("...");
+    }
+
   return (
     <Card>
       <div className="product-image-container">
@@ -30,13 +36,13 @@ export default function productCardLarge({ data, nodeless }) {
             <h1>{title.toLowerCase()}</h1>
           </Link>
           <hr />
-          <p>{description ? description.internal.content : ""}</p>
+          <p>{trimmedDescription}</p>
         </div>
         <div className="price-button-container">
           <CartButton
             id={id}
             title={title}
-            description={description ? description.internal.content : ""}
+            description={trimmedDescription}
             image={gallery[0].fluid.src}
             slug={generateSlug(title)}
             price={price}
