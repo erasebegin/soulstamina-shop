@@ -25,7 +25,7 @@ export default ({ title }) => (
         />
         <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="keywords" content={data.site.siteMetadata.keywords} />
-        <title>{title.toLowerCase()}</title>
+        <title>{title ? title.toLowerCase() : siteMetadata.title}</title>
         <html lang="en" />
         {/* Google / Search Engine Meta Tags */}
         <meta itemprop="name" content={data.site.siteMetadata.author} />
