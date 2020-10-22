@@ -26,7 +26,7 @@ export default function about({ data }) {
   return (
     <>
       <SEO title="About" />
-      <Layout>
+      <Layout title="About">
         <Container className="container">
           <div className="title-container">
             <Title

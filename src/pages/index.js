@@ -32,7 +32,7 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO title="Home" />
-      <Layout>
+      <Layout title="Home">
         <Carousel data={data.hero.edges} isMobile={isMobile} />
         <FeaturedProduct
           data={firstFeatured.node}

@@ -6,7 +6,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: "Soulstamina",
+    title: "soulstamina",
     author: "Yana",
     imageUrl: "https://i.imgur.com/Vz81GEl.png",
     description: "Welcome to the Soulstamina shop!",

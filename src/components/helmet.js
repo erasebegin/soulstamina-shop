@@ -2,7 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Helmet from "react-helmet";
 
-export default () => (
+export default ({ title }) => (
   <StaticQuery
     query={graphql`
       query helmetQuery {
@@ -17,7 +17,7 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Helmet>
         <meta
           name="viewport"
@@ -25,7 +25,7 @@ export default () => (
         />
         <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="keywords" content={data.site.siteMetadata.keywords} />
-        <title>{data.site.siteMetadata.title}</title>
+        <title>{title.toLowerCase()}</title>
         <html lang="en" />
         {/* Google / Search Engine Meta Tags */}
         <meta itemprop="name" content={data.site.siteMetadata.author} />

@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-bulma-quickstart",
+  "name": "soulstamina-shop",
   "description": "A place to find beautiful cards, canvases and prints by Soulstamina",
   "version": "1.10.3",
   "author": "Chris Haupt <chris.james.haupt@gmail.com>",
@@ -40,11 +40,13 @@
     "styled-components": "^5.1.1"
   },
   "keywords": [
-    "gatsby",
-    "bulma",
-    "starter",
-    "kit",
-    "template"
+    "canvas",
+    "print",
+    "postcard",
+    "tallinn",
+    "estonia",
+    "art",
+    "creative"
   ],
   "license": "MIT",
   "scripts": {

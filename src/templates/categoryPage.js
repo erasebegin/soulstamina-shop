@@ -41,7 +41,7 @@ const CategoryPage = ({ data }) => {
   return (
     <>
       <SEO title={data.categories.title} />
-      <Layout>
+      <Layout title={data.categories.title}>
         <Title title={data.categories.title} subtitle="by yana soulstamina" />
         <FeaturedProduct data={featuredProduct} isMobile={isMobile} />
         <section className="section recent-products">

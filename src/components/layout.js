@@ -6,10 +6,10 @@ import Helmet from "./helmet";
 import Navbar from "../components/navbar";
 import Footer from "./globals/footer";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, title }) => (
   <Container className="columns">
     <div className="column main">
-      <Helmet />
+      <Helmet title={title} />
       <Navbar />
       <div className="columns is-centered">
         <div className="column main-body">{children}</div>
