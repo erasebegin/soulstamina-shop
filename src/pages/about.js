@@ -48,34 +48,22 @@ export default function about({ data }) {
                   className="image-foreground image1"
                 />
               </BackgroundImage>
-
-              <BackgroundImage
-                className="image"
-                fluid={aboutData.image2.fluid}
-                backgroundColor={`#040e18`}
-              >
-                <Img
-                  fluid={data.polaroid.childImageSharp.fluid}
-                  className="image-foreground image2"
-                />
-              </BackgroundImage>
-              <BackgroundImage
-                className="image"
-                fluid={aboutData.image3.fluid}
-                backgroundColor={`#040e18`}
-              >
-                <Img
-                  fluid={data.polaroid.childImageSharp.fluid}
-                  className="image-foreground image3"
-                />
-              </BackgroundImage>
             </div>
             <BackgroundImage
               fluid={data.canvas.childImageSharp.fluid}
               className="header-text-container"
+              style={
+                aboutData.headerText
+                  ? { display: "initial" }
+                  : { display: "none" }
+              }
             >
-              <div className="header-text">
-                {aboutData.headerText.internal.content}
+              <div
+                className="header-text"
+              >
+                {aboutData.headerText
+                  ? aboutData.headerText.internal.content
+                  : ""}
               </div>
             </BackgroundImage>
           </div>
@@ -129,38 +117,18 @@ const Container = styled.div`
       .image {
         width: 300px;
         height: 300px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        margin-bottom: 1.5em;
-
-        &:nth-child(odd) {
-          display: none;
-        }
-
-        &:nth-child(1) {
-          transform: rotate(-5deg);
-        }
-        &:nth-child(2) {
-          transform: rotate(1deg);
-        }
-        &:nth-child(3) {
-          transform: rotate(3deg);
-        }
-
+        margin-bottom: 4em;
+        
         .image-foreground {
           margin: -0.2em;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
         @media (min-width: 900px) {
-          width: 200px;
-          height: 200px;
-          margin-bottom: 1em;
-          &:nth-child(odd) {
-            display: initial;
-          }
-          &:nth-child(2) {
-          transform: rotate(5deg);
-        }
+          width: 40vh;
+          height: 40vh;
+          margin-bottom: 6em;
         }
       }
     }
@@ -191,6 +159,11 @@ const Container = styled.div`
     p {
       margin-bottom: 3em;
     }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: .75em;
+    }
   }
 `;
 
@@ -210,7 +183,10 @@ export const query = graphql`
         }
       }
     }
-    about: allContentfulAboutPage(limit: 1, sort: { fields: updatedAt }) {
+    about: allContentfulAboutPage(
+      sort: { fields: updatedAt, order: DESC }
+      limit: 1
+    ) {
       edges {
         node {
           body {
@@ -219,16 +195,6 @@ export const query = graphql`
             }
           }
           image {
-            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          image2 {
-            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          image3 {
             fluid(resizingBehavior: CROP, cropFocus: CENTER) {
               ...GatsbyContentfulFluid
             }
