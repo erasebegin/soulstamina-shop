@@ -38,16 +38,11 @@ export default function about({ data }) {
           </div>
           <div className="header-container">
             <div className="title-image-container">
-              <BackgroundImage
+              <Img
                 className="image"
                 fluid={aboutData.image.fluid}
                 backgroundColor={`#040e18`}
-              >
-                <Img
-                  fluid={data.polaroid.childImageSharp.fluid}
-                  className="image-foreground image1"
-                />
-              </BackgroundImage>
+              />
             </div>
             <BackgroundImage
               fluid={data.canvas.childImageSharp.fluid}
@@ -115,21 +110,8 @@ const Container = styled.div`
       justify-content: center;
 
       .image {
-        width: 300px;
-        height: 300px;
-        margin-bottom: 4em;
-        
-        .image-foreground {
-          margin: -0.2em;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        @media (min-width: 900px) {
-          width: 40vh;
-          height: 40vh;
-          margin-bottom: 6em;
-        }
+        width: 600px;
+        margin-bottom: 2em;
       }
     }
 
@@ -195,7 +177,7 @@ export const query = graphql`
             }
           }
           image {
-            fluid(resizingBehavior: CROP, cropFocus: CENTER) {
+            fluid {
               ...GatsbyContentfulFluid
             }
           }

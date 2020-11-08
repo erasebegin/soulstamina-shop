@@ -46,7 +46,7 @@ const Button = styled.button`
 display: flex;
 align-items: center;
 gap: .75em;
-  padding: 0em 0.4em 0 0.3em;
+  padding: 0.1em 0.2em 0.2em 0.2em;
   border: none;
   color: #bc9f75;
   background: #fff8ee00;
@@ -57,5 +57,9 @@ gap: .75em;
     background: #bc9f75;
     color: #fff8ee;
     transition: ease-in-out 200ms;
+  }
+
+  @media(min-width: 1000px){
+  padding: 0em 0.4em .1em 0.3em;
   }
 `;

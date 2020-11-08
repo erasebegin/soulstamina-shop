@@ -76,7 +76,7 @@ export default function ProductPageHeader({
               )}
             </div>
             <div className="price-button-container">
-              <p>${price}</p>
+              <p>${(Math.round(price * 100) / 100).toFixed(2)}</p>
               <div className="buttons">
                 {isMobile ? (
                   <AddToCartButton
@@ -168,14 +168,14 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
         padding-left: 1em;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
       }
     }
 
     @media (min-width: 1000px) {
+      .price-button-container{
+        height: 60px;
+      }
       .product-header-title {
         order: 1;
       }

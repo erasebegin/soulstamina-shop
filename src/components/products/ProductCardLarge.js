@@ -47,7 +47,7 @@ export default function productCardLarge({ data, nodeless }) {
             slug={generateSlug(title)}
             price={price}
           />
-          <p className="price">${price}&nbsp;</p>
+          <p className="price">${(Math.round(price * 100) / 100).toFixed(2)}&nbsp;</p>
         </div>
       </div>
     </Card>

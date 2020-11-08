@@ -38,7 +38,7 @@ export default function productCard({ data, nodeless }) {
           </div>
         </div>
         <div className="footer">
-          <p className="price">${price}</p>
+          <p className="price">${(Math.round(price * 100) / 100).toFixed(2)}</p>
           <CartButton
             id={id}
             title={title}
