@@ -1,28 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { graphql } from "gatsby";
+import React, { useState, useEffect } from 'react';
+import { graphql } from 'gatsby';
+import styled from "styled-components";
 
-import Layout from "../components/layout";
-import ProductList from "../components/products/ProductList";
-import FeaturedProduct from "../components/products/ProductCardFeatured";
-import Title from "../components/globals/Title";
-import SEO from "../components/seo";
+import Layout from '../components/layout';
+import ProductList from '../components/products/ProductList';
+import FeaturedProduct from '../components/products/ProductCardFeatured';
+import Title from '../components/globals/Title';
+import SEO from '../components/seo';
 
 const CategoryPage = ({ data }) => {
   const [isMobile, setIsMobile] = useState(null);
   const [productList, setProductList] = useState(null);
+  const [featuredArr, setFeaturedArr] = useState([]);
 
-  const featuredArr = data.categories.product.filter((item) => {
-    return item.featured === true;
-  });
+  console.log({ data });
+
+  if (data.product) {
+    setFeaturedArr(
+      data.categories.product.filter((item) => {
+        return item.featured === true;
+      })
+    );
+  }
 
   const featuredProduct = featuredArr[0];
 
   const removeFeaturedItem = () => {
-    const newList = data.categories.product.filter((item) => {
-      return item.id !== featuredProduct.id;
-    });
-
-    setProductList(newList);
+    let newList;
+    if (data.categories.product) {
+      newList = data.categories.product.filter((item) => {
+        return item.id !== featuredProduct.id;
+      });
+      setProductList(newList);
+    }
   };
 
   useEffect(() => {
@@ -30,13 +40,25 @@ const CategoryPage = ({ data }) => {
     removeFeaturedItem();
   }, []);
 
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     global.window = {};
   }
 
   window.onresize = function() {
     window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
   };
+
+  if (!productList) {
+    return (
+      <>
+        <SEO title={data.categories.title} />
+        <Layout title={data.categories.title}>
+          <Title title={data.categories.title} subtitle="by yana soulstamina" />
+          <ErrorMessage>Oops, it appears there's nothing here yet</ErrorMessage>
+        </Layout>
+      </>
+    );
+  }
 
   return (
     <>
@@ -78,5 +100,10 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+const ErrorMessage = styled.p`
+  text-align: center;
+  margin-top: 4em;
+`
 
 export default CategoryPage;
