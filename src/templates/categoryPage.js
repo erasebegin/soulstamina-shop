@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ProductList from '../components/products/ProductList';
@@ -13,31 +13,32 @@ const CategoryPage = ({ data }) => {
   const [productList, setProductList] = useState(null);
   const [featuredArr, setFeaturedArr] = useState([]);
 
-  console.log({ data });
-
-  if (data.product) {
-    setFeaturedArr(
-      data.categories.product.filter((item) => {
-        return item.featured === true;
-      })
-    );
-  }
-
-  const featuredProduct = featuredArr[0];
-
-  const removeFeaturedItem = () => {
-    let newList;
-    if (data.categories.product) {
-      newList = data.categories.product.filter((item) => {
-        return item.id !== featuredProduct.id;
-      });
-      setProductList(newList);
+  const createProductList = () => {
+    if (featuredArr.length > 0) {
+      setProductList(
+        data.categories.product.filter((item) => item.id !== featuredArr[0].id)
+      );
+    } else {
+      setProductList(data.categories.product);
     }
   };
 
   useEffect(() => {
+    if (data) {
+      const featured = data.categories.product.filter(
+        (item) => item.featured === true
+      );
+      if (featured.length > 0) {
+        setFeaturedArr(featured);
+      }
+    }
+  }, []);
+
+
+  useEffect(() => {
     window.innerWidth <= 1000 ? setIsMobile(true) : setIsMobile(false);
-    removeFeaturedItem();
+    console.log({ data });
+    createProductList();
   }, []);
 
   if (typeof window === 'undefined') {
@@ -65,7 +66,7 @@ const CategoryPage = ({ data }) => {
       <SEO title={data.categories.title} />
       <Layout title={data.categories.title}>
         <Title title={data.categories.title} subtitle="by yana soulstamina" />
-        <FeaturedProduct data={featuredProduct} isMobile={isMobile} />
+        <FeaturedProduct data={featuredArr[0]} isMobile={isMobile} />
         <section className="section recent-products">
           <ProductList nodeless={productList} isMobile={isMobile} />
         </section>
@@ -102,8 +103,10 @@ export const pageQuery = graphql`
 `;
 
 const ErrorMessage = styled.p`
+  font-family: 'Playfair Display';
+  font-size: 1.2rem;
   text-align: center;
   margin-top: 4em;
-`
+`;
 
 export default CategoryPage;

@@ -11,9 +11,9 @@ export default function CategorySelector() {
   return (
     <Container className="section">
       <div className="columns is-multiline">
-        {categories.map(category => {
+        {categories.map((category, index) => {
           return (
-            <Link className="column" to={category.slug}>
+            <Link className="column" to={category.slug} key={index}>
               <div className="category-card">
                 <h1>{category.title}</h1>
               </div>

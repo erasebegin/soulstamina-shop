@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import { RiShoppingCart2Fill } from "react-icons/ri";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { RiShoppingCart2Fill } from 'react-icons/ri';
 
-import generateSlug from "../utils/GenerateSlug";
-import "./style.scss";
-import soulstaminaLogo from "../images/soulstamina_logo_2020.png";
+import generateSlug from '../utils/GenerateSlug';
+import './style.scss';
+import soulstaminaLogo from '../images/soulstamina_logo_2020.png';
 
 const NavCategories = ({ data }) => {
   return (
     <div className="dynamic-nav-container">
-      {data.allContentfulProductCategories.edges.map((item) => {
+      {data.allContentfulProductCategories.edges.map((item, index) => {
         return (
           <Link
             to={`/categories/${generateSlug(item.node.title)}`}
             className="navbar-item"
+            key={index}
           >
             {item.node.title}
           </Link>
@@ -38,10 +39,10 @@ const Navbar = () => {
     }
   `);
 
-  const [navActive, setNavActive] = useState("");
+  const [navActive, setNavActive] = useState('');
 
   const setNav = () => {
-    navActive === "" ? setNavActive("is-active") : setNavActive("");
+    navActive === '' ? setNavActive('is-active') : setNavActive('');
   };
 
   return (
@@ -98,7 +99,7 @@ export default Navbar;
 const Nav = styled.nav`
   background: white;
   z-index: 0;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
 
   .navbar-item {
     font-weight: 400;
